@@ -17,25 +17,24 @@ read install
 
 if [[ $install = lie ]]; then
     nmcli device wifi connect Xiaomi_0298_5G password 59563129
-    git clone https://github.com/LiGoZoff/myArch.git
-    sudo chmod +x ~/myArch/scripts/install.sh
-    ./myArch/scripts/install.sh
+    git clone https://github.com/LiGoZoff/Hyprland_Arch.git
+    sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
+    ./Hyprland_Arch/scripts/install.sh
 fi
 
 if [[ $install = y ]] || [[ $install = yes ]]; then
-    git clone https://github.com/LiGoZoff/myArch.git
-    sudo chmod +x ~/myArch/scripts/install.sh
-    ./myArch/scripts/install.sh
+    git clone https://github.com/LiGoZoff/Hyprland_Arch.git
+    sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
+    ./Hyprland_Arch/scripts/install.sh
 fi
 
 if [[ $install = no ]] || [[ $install = n ]]; then
     echo "GoodBye"
-    break
 else
     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
 fi
 done
 
-sudo rm -rf ~/myArch
-sudo rm -rf ~/install_arch.sh
+sudo rm -rf ~/Hyprland_Arch
+sudo rm -rf ~/install_hyprland.sh
