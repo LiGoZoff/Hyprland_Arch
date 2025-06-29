@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sudo chmod +x ~/Hyprland_Arch/.config/hypr/scripts/vscode.sh Brightness.sh Volume.sh TouchPad.sh
+sudo chmod +x ~/Hyprland_Arch/config/hypr/scripts/vscode.sh Brightness.sh Volume.sh TouchPad.sh
 sudo chmod +x ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh
-sudo chmod +x ~/Hyprland_Arch/.config/rofi/launcher.sh launcher-calc.sh launcher-emoji.sh
-sudo chmod +x ~/Hyprland_Arch/.config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
+sudo chmod +x ~/Hyprland_Arch/config/rofi/launcher.sh launcher-calc.sh launcher-emoji.sh
+sudo chmod +x ~/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x ~/Hyprland_Arch/scripts/secureboot.sh
 
 check_package_installed() {
@@ -117,7 +117,7 @@ else
 fi
 done
 
-CONFIG_FILE="$HOME/Hyprland_Arch/.config/hypr/conf/General.conf"
+CONFIG_FILE="$HOME/Hyprland_Arch/config/hypr/conf/General.conf"
 TEXT_TO_FIND="us, ru"
 while true; do
 clear
@@ -312,14 +312,14 @@ fi
 echo "Setup of the screen has been completed successfully!/Настройка экрана завершена успешно!"
 
 sudo rm -rf ~/.config/hypr
-sudo mv ~/Hyprland_Arch/.config/hypr ~/.config/
-sudo mv ~/Hyprland_Arch/.config/wal ~/.config/
-sudo mv ~/Hyprland_Arch/.config/kitty ~/.config/
-sudo mv ~/Hyprland_Arch/.config/fastfetch ~/.config/
-sudo mv ~/Hyprland_Arch/.config/mako ~/.config/
-sudo mv ~/Hyprland_Arch/.config/rofi ~/.config/
-sudo mv ~/Hyprland_Arch/.config/waybar ~/.config/
-sudo mv ~/Hyprland_Arch/.config/clipse ~/.config/
+sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
+sudo mv ~/Hyprland_Arch/config/wal ~/.config/
+sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
+sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+sudo mv ~/Hyprland_Arch/config/mako ~/.config/
+sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
+sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
 sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
 sudo rm -rf /etc/hosts
 sudo mv ~/Hyprland_Arch/conf/hosts /etc/
@@ -397,19 +397,19 @@ fi
 
 echo "Setup of the screen has been completed successfully!/Настройка экрана завершена успешно!"
 
-sudo rm -rf ~/Hyprland_Arch/.config/hypr/conf/KeyBinds.conf
-sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/.config/hypr/scripts/KeyBinds.conf
-sudo rm -rf ~/Hyprland_Arch/.config/hypr/conf/Windowrule.conf
-sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/.config/hypr/scripts/Windowrule.conf
+sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/KeyBinds.conf
+sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/scripts/KeyBinds.conf
+sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
+sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/scripts/Windowrule.conf
 sudo rm -rf ~/.config/hypr
-sudo mv ~/Hyprland_Arch/.config/hypr ~/.config/
-sudo mv ~/Hyprland_Arch/.config/wal ~/.config/
-sudo mv ~/Hyprland_Arch/.config/kitty ~/.config/
-sudo mv ~/Hyprland_Arch/.config/fastfetch ~/.config/
-sudo mv ~/Hyprland_Arch/.config/mako ~/.config/
-sudo mv ~/Hyprland_Arch/.config/rofi ~/.config/
-sudo mv ~/Hyprland_Arch/.config/waybar ~/.config/
-sudo mv ~/Hyprland_Arch/.config/clipse ~/.config/
+sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
+sudo mv ~/Hyprland_Arch/config/wal ~/.config/
+sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
+sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+sudo mv ~/Hyprland_Arch/config/mako ~/.config/
+sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
+sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
 sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
 sudo rm -rf /etc/hosts
 sudo mv ~/Hyprland_Arch/conf/hosts /etc/
