@@ -1,0 +1,190 @@
+{
+	"height": 40,
+	"width": 1880,
+	"margin-top": 10,
+
+	"modules-left": ["power-profiles-daemon", "cpu", "memory", "temperature", "hyprland/workspaces", "custom/spotify"],
+	"modules-center": ["clock", "tray"],
+	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "battery", "custom/pacman"],
+
+    
+    "hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+        "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+    },
+		"format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十",
+      "active": "",
+    }
+	    },
+
+      "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 15,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 15
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 15
+            }
+        ]
+    },
+
+    "custom/pacman": {
+    "format": "{icon}{0}",
+    "return-type": "json",
+    "format-icons": {
+    "pending-updates": " ",
+    "updated": ""
+         },
+    "exec-if": "which waybar-updates",
+    "exec": "waybar-updates",
+    "on-click": "kitty -T update yay -Syu",
+    },
+
+	"tray": {
+		"icon-size": 20,
+		"spacing": 10,
+	},
+	
+    "backlight": {
+	"device": "intel_backlight",
+	"format": "{icon} {percent}%",
+	"format-icons": [""]
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+          "default": "",
+          "performance": "",
+          "balanced": "",
+          "power-saver": ""
+        }
+      },
+
+    "custom/spotify": {
+        "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
+        "format": "{}  ",
+        "return-type": "json",
+       "on-click": "playerctl play-pause",
+       "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+        },
+    
+    "pulseaudio": {
+		"scroll-step": 1,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+		"default": ["", "", ""]
+		},
+		"on-click": "pavucontrol",
+		"tooltip": false,
+	},
+	
+	"pulseaudio#microphone": {
+        "format": "{format_source}",
+        "tooltip": false,
+        "format-source": "",
+        "format-source-muted": "<span color='#ff0000'> Muted</span>",
+    },
+
+	"clock": {
+                "interval": 1,
+		"format": " {:%I:%M:%S | %d.%m.%Y} ",
+		"tooltip-format": "<big><span color='#000000'>{:%Y %B}</span></big>\n<tt><small>{calendar}</small></tt>",
+
+        "calendar": {
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#cdd6f4'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#f5c2e7'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#f5c2e7'><b>{}</b></span>",
+                              "today":      "<span color='#eba0ac'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down",
+                    }
+		},
+
+	
+	"battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+       "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+       "format-icons": [ "", "", "", ""],
+    },
+    
+    
+          "cpu": {
+          "interval": 2,
+          "format": " {usage}%",
+          "tooltip": false,
+      },
+        
+          "memory": {
+          "interval": 2,
+          "cpacing": -100,
+          "format": " {}%",
+      },
+      
+          "temperature": {
+          "critical-threshold": 80,
+          "interval": 2,
+          "format": " {temperatureC}°C",
+          "format-icons": [""],
+      },
+       
+    
+        "bluetooth": {
+        "format": "",
+     ///   "on-click": "exec kitty --class bluetuith -e 'bluetuith'",
+        "format-disabled": "",
+        "format-off": "<",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "max-length": 16
+    },
+
+	"escape": true,
+	"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+	},
+}

@@ -1,0 +1,56 @@
+# GLOBAL
+#sort=+time
+layer=overlay
+
+# STYLE
+font=Bebas Neue 11.2
+width=190
+margin=20
+padding=0, 0, 20, 20
+border-size=1
+border-radius=10
+progress-color=#000000
+max-icon-size=36
+icon-path=/home/owl/.icons/Catppuccin-Mocha-Alt2
+icon-location=left
+format=<b>%s</b>\n%b
+text-alignment=left
+anchor=top-right
+default-timeout=2000
+
+# CRITERA
+## urgency
+[urgency=low]
+font=Bebas Neue Bold 12.2
+default-timeout=2000
+background-color=#000000
+border-color=#cdd6f4
+text-color=#cdd6f4
+
+[urgency=normal]
+icons=1
+font=Bebas Neue Bold 16.3
+default-timeout=2000
+background-color=#000000
+border-color=#cdd6f4
+text-color=#fab387
+
+[urgency=critical]
+font=Bebas Neue Bold 21.2
+default-timeout=2000
+background-color=#000000
+border-color=#cdd6f4
+text-color=#1e1e2e
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+
+## app-name
+[app-name=grim,slurp]
+anchor=top-center
+format=%s\n%b
+group-by=app-name
+default-timeout=20
+on-notify=exec "Cкриншот сохранен:"
+
+## body
+[body=""]
+format=%s\n%b

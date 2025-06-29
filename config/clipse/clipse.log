@@ -1,0 +1,13 @@
+2025/02/08 18:29:49 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: json: cannot unmarshal string into Go value of type config.CustomTheme
+2025/02/08 18:31:07 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: json: cannot unmarshal string into Go value of type config.CustomTheme
+2025/02/08 18:31:51 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: json: cannot unmarshal string into Go value of type config.CustomTheme
+2025/02/08 18:31:52 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: json: cannot unmarshal string into Go value of type config.CustomTheme
+2025/02/08 18:32:04 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: json: cannot unmarshal string into Go value of type config.CustomTheme
+2025/02/08 18:36:19 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character 'i' looking for beginning of value
+2025/02/08 18:38:53 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/08 18:39:21 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/08 18:45:24 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/08 19:00:27 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/09 06:49:12 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/09 07:51:41 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value
+2025/02/09 07:53:43 logger.go:19: ERROR: Error decoding JSON for custom_theme.json. Try creating this file manually instead. Err: invalid character '@' looking for beginning of value

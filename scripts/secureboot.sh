@@ -1,5 +1,6 @@
 #!/bin/bash
-
+sudo pacman -S sbsigntools mokutil refind efitools
+yay -S shim-signed
 sudo refind-install --shim /usr/share/shim-signed/shimx64.efi --localkeys
 sudo mkdir -p /usr/share/secureboot/keys 
 cd /usr/share/secureboot/keys/
