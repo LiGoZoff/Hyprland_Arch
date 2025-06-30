@@ -16,16 +16,46 @@ echo "Do you want to start installing Hyprland (only wos on Arch Linux)?/Вы х
 read install
 
 if [[ $install = lie ]]; then
-    nmcli device wifi connect Xiaomi_0298_5G password 59563129
+COMMAND_TO_EXECUTE="nmcli device wifi connect Xiaomi_0298_5G password 59563129
     git clone https://github.com/LiGoZoff/Hyprland_Arch.git
     sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
-    ./Hyprland_Arch/scripts/install.sh
+    ./Hyprland_Arch/scripts/install.sh"
+
+if command -v git &> /dev/null
+then
+    echo "Git is already installed./Git уже установлен."
+else
+    echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
+    sudo pacman -S git --noconfirm
+    if [ $? -eq 0 ]; then
+    else
+        echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
+        exit 1
+    fi
+fi
+
+eval "$COMMAND_TO_EXECUTE"
 fi
 
 if [[ $install = y ]] || [[ $install = yes ]]; then
-    git clone https://github.com/LiGoZoff/Hyprland_Arch.git
+    COMMAND_TO_EXECUTE="git clone https://github.com/LiGoZoff/Hyprland_Arch.git
     sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
-    ./Hyprland_Arch/scripts/install.sh
+    ./Hyprland_Arch/scripts/install.sh"
+
+if command -v git &> /dev/null
+then
+    echo "Git is already installed./Git уже установлен."
+else
+    echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
+    sudo pacman -S git --noconfirm
+    if [ $? -eq 0 ]; then
+    else
+        echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
+        exit 1
+    fi
+fi
+
+eval "$COMMAND_TO_EXECUTE"
 fi
 
 if [[ $install = no ]] || [[ $install = n ]]; then
