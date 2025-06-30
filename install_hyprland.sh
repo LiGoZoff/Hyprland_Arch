@@ -24,12 +24,15 @@ COMMAND_TO_EXECUTE="nmcli device wifi connect Xiaomi_0298_5G password 59563129
 if command -v git &> /dev/null
 then
     echo "Git is already installed./Git уже установлен."
+    sleep 1
 else
     echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
+    sleep 1
     sudo pacman -S git --noconfirm
     if [ $? -eq 0 ]; then
     else
         echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
+        sleep 1
         exit 1
     fi
 fi
@@ -45,12 +48,15 @@ if [[ $install = y ]] || [[ $install = yes ]]; then
 if command -v git &> /dev/null
 then
     echo "Git is already installed./Git уже установлен."
+    sleep 1
 else
     echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
+    sleep 1
     sudo pacman -S git --noconfirm
     if [ $? -eq 0 ]; then
     else
         echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
+        sleep 1
         exit 1
     fi
 fi
