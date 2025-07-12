@@ -6,7 +6,6 @@ bind = $mainMod, E, exec, nemo
 bind = ALT, Tab, cyclenext,
 bind = ALT, Tab, bringactivetotop,
 bind = $mainMod, $mainMod_L, exec, ~/.config/rofi/scripts/launcher.sh
-bind = $mainMod, F12, exec, ~/.config/rofi/scripts/launcher-calc.sh
 bind = $mainMod, F11, exec, ~/.config/rofi/scripts/launcher-emoji.sh
 bind = $mainMod, W, exec, firefox
 bind = $mainMod, F, fullscreen,
@@ -81,4 +80,7 @@ bind = , xf86MonBrightnessDown, exec, .config/hypr/scripts/Brightness.sh --dec
 bind = , xf86MonBrightnessUp, exec, .config/hypr/scripts/Brightness.sh --inc
 
 #TouchPad
-bind = $mainMod, F10, exec, .config/hypr/scripts/TouchPad.sh
+bind = , XF86Favorites, exec, .config/hypr/TouchPad.sh
+
+#Calc 
+bind = , XF86Calculator, exec, ~/.config/rofi/launcher-calc.sh
