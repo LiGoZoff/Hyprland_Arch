@@ -147,40 +147,20 @@ read install
 
 if [[ $install = lie ]]; then
     sudo pacman -S brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch neofetch cmatrix waybar qbittorrent pamixer network-manager-applet steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome plasma-framework5 lib32-sdl2 telegram-desktop syncthing webkit2gtk -noconfirm
-    $helper_name -S hyprpicker swww-git clipse hyprshot cava arch-gaming-meta lact youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed -noconfirm
+    $helper_name -S hyprpicker swww-git clipse hyprshot cava arch-gaming-meta lact swengine youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed -noconfirm
     flatpak install flathub io.github.Soundux -noconfirm
     sudo pacman -Rns wofi dunst vim dolphin -noconfirm
 fi
 
 if [[ $install = yes ]] || [[ $install = y ]]; then
     sudo pacman -S hyprland brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch neofetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome plasma-framework5 lib32-sdl2 -noconfirm
-    $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates -noconfirm
+    $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist swengine python-pywalfox waybar-updates -noconfirm
 fi     
 
 if [[ $install = no ]] || [[ $install = n ]]; then
     echo "GoodBye"
     sleep 1
     exit 0
-else
-    echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-    sleep 1
-fi
-done
-
-while true; do
-clear
-echo "Would you like to use Live Wallpapers with Swengine?/Хотите ли вы использовать Живые обои с помощью Swengine? (yes/no)"
-
-read wallpaper
-
-if [[ $wallpaper = yes ]] || [[ $wallpaper = y ]]; then
-    yay -S swengine
-    sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
-fi
-
-if [[ $wallpaper = no ]] || [[ $wallpaper = n ]]; then
-    echo "Skiping..."
-    sleep 1
 else
     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
@@ -203,6 +183,7 @@ sudo systemctl start autostart
 sudo systemctl enable autostart
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
+sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
 
 clear
 echo "You use SDDM?/Вы используете SDDM? (yes/no)"
