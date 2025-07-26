@@ -179,8 +179,8 @@ sudo mkdir /etc/init.d
 sudo mv ~/Hyprland_Arch/conf/autostart /etc/init.d/
 sudo chmod +x /etc/init.d/autostart
 sudo mv ~/Hyprland_Arch/conf/autostart.service /etc/systemd/system/
-sudo systemctl start autostart
-sudo systemctl enable autostart
+sudo systemctl start autostart.service
+sudo systemctl enable autostart.service
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
