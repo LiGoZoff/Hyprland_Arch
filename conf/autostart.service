@@ -1,0 +1,7 @@
+[Unit]
+Description=autostart service
+After=network.target
+[Service]
+ExecStart=/etc/init.d/autostart
+[Install]
+WantedBy=multi-user.target
