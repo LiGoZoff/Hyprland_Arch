@@ -8,3 +8,4 @@ pkill -SIGUSR2 waybar
 hyprctl reload
 pkill -SIGUSR1 waybar
 bash ~/.config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh "$HOME/Документы/Obsidian"
+walcord
