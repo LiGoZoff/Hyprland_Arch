@@ -6,7 +6,6 @@ sudo chmod +x ~/Hyprland_Arch/config/rofi/launcher.sh launcher-calc.sh launcher-
 sudo chmod +x ~/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x ~/Hyprland_Arch/scripts/secureboot.sh
 
-#!/bin/bash
 
 check_package_installed() {
     command -v "$1" &> /dev/null
