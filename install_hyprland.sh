@@ -30,7 +30,6 @@ else
     sleep 1
     sudo pacman -S git --noconfirm
     if [ $? -eq 0 ]; then
-    else
         echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
         sleep 1
         exit 1
@@ -54,7 +53,6 @@ else
     sleep 1
     sudo pacman -S git --noconfirm
     if [ $? -eq 0 ]; then
-    else
         echo "Error while installing Git. Command execution is canceled./Ошибка при установке Git. Выполнение команды отменено."
         sleep 1
         exit 1
