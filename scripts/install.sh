@@ -1,10 +1,10 @@
 #!/bin/bash
 
-sudo chmod +x ~Hyprland_Arch/config/hypr/scripts/vscode.sh Brightness.sh Volume.sh TouchPad.sh
-sudo chmod +x ~Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh
-sudo chmod +x ~Hyprland_Arch/config/rofi/launcher.sh launcher-calc.sh launcher-emoji.sh
-sudo chmod +x ~Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
-sudo chmod +x ~Hyprland_Arch/scripts/secureboot.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/vscode.sh Brightness.sh Volume.sh TouchPad.sh
+sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh launcher-calc.sh launcher-emoji.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
+sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
 
 check_package_installed() {
     command -v "$1" &> /dev/null
