@@ -64,6 +64,7 @@ fi
 
 if [[ $install = no ]] || [[ $install = n ]]; then
     echo "GoodBye"
+    exit 1
 else
     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
