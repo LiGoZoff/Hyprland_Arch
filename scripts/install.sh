@@ -148,7 +148,7 @@ while true; do
     if [[ $install = lie ]]; then
         sudo pacman -S nerd-fonts brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch neofetch cmatrix waybar qbittorrent pamixer network-manager-applet steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome plasma-framework5 lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman -noconfirm
         $helper_name -S hyprpicker swww-git clipse hyprshot cava arch-gaming-meta lact swengine youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed -noconfirm
-        flatpak install flathub io.github.Soundux -noconfirm
+        flatpak install flathub io.github.Soundux -y
         sudo pacman -Rns wofi dunst vim dolphin -noconfirm
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
@@ -173,7 +173,7 @@ systemctl --user enable gamemoded && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
 sudo rfkill unblock all
-sudo mkdir /etc/init.d
+sudo mkdir -p /etc/init.d
 sudo mv ~/Hyprland_Arch/conf/autostart /etc/init.d/
 sudo chmod +x /etc/init.d/autostart
 sudo mv ~/Hyprland_Arch/conf/autostart.service /etc/systemd/system/
@@ -341,32 +341,31 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     sleep 1
 elif [[ $dots = lie ]]; then
     sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/KeyBinds.conf
-sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/scripts/KeyBinds.conf
-sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
-sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/scripts/Windowrule.conf
-sudo rm -rf ~/.config/hypr
-sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
-sudo mv ~/Hyprland_Arch/config/wal ~/.config/
-sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
-sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-sudo mv ~/Hyprland_Arch/config/mako ~/.config/
-sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
-sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
-sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
-sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
-sudo rm -rf /etc/hosts
-sudo mv ~/Hyprland_Arch/conf/hosts /etc/
-mkdir Pictures; mkdir Pictures/Wallpapers; mkdir Pictures/Screenshots
-sudo rm -rf ~/.bashrc
-sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
-sudo mv ~/Hyprland_Arch/.bashrc /root
-sleep 1
+    sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/scripts/KeyBinds.conf
+    sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
+    sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/scripts/Windowrule.conf
+    sudo rm -rf ~/.config/hypr
+    sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
+    sudo mv ~/Hyprland_Arch/config/wal ~/.config/
+    sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
+    sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+    sudo mv ~/Hyprland_Arch/config/mako ~/.config/
+    sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+    sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
+    sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
+    sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
+    sudo rm -rf /etc/hosts
+    sudo mv ~/Hyprland_Arch/conf/hosts /etc/
+    mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
+    sudo rm -rf ~/.bashrc
+    sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
+    sudo mv ~/Hyprland_Arch/.bashrc /root
+    sleep 1
 
 elif [[ $dots = no ]] || [[ $dots = n ]]; then
     echo "Skipping..."
     sleep 1
 fi
-
 
 clear
 echo "Do you want install Chaotic-AUR?/Хотите установить Chaotic-AUR (yes/no)"
@@ -384,20 +383,21 @@ else
     echo "Skipping..."
     sleep 1
 fi
+
 clear
-echo "Whether you will put Windows as a second system (Dual Boot) with Secure Boot support./echo "Whether you will put Windows as a second system (Dual Boot) with Secure Boot support./Будете ли вы ставить Windows второй системой? (yes/no)"
- (yes/no)"
+echo "Whether you will put Windows as a second system (Dual Boot) with Secure Boot support./Будете ли вы ставить Windows второй системой? (yes/no)"
 
 read secureboot
 
 if [[ $secureboot = yes ]] || [[ $secureboot = y ]]; then
     bash $HOME/Hyprland_Arch/scripts/secureboot.sh
 else
-    echo "Skiping..."
+    echo "Skipping..."
     sleep 1
 fi
+
 clear
-echo "Do you want install Zapret?(special for russian people)/Будешь ставить обход блокировки ютуба и дс? (y/n)"
+echo "Do you want install Zapret?(special for russian people)/Будешь ставить обход блокировки ютуба и дс? (yes/no)"
 
 read zapret
 
@@ -408,16 +408,19 @@ if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
    bash $HOME/Hyprland_Arch/scripts/dpi.sh
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
 else
-    echo "Skiping..."
+    echo "Skipping..."
     sleep 1
 fi
+
 clear
-echo "Presetting... Select the desired theme and wallpaper./Предварительная настройка... Выбирите нужную тему и обои."
+echo "Presetting... Select the desired theme and wallpaper./Предварительная настройка... Выберите нужную тему и обои."
 
 if [[ $dots = yes ]] || [[ $dots = y ]]; then
     nwg-look 
     sleep 1
 fi
+
+read -p "Do you want to set a wallpaper? (yes/no): " wallpaper
 if [[ $wallpaper = yes ]] || [[ $wallpaper = y ]]; then
     swengine
     sleep 1
