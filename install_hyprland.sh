@@ -16,10 +16,10 @@ echo "Do you want to start installing Hyprland (only wos on Arch Linux)?/Вы х
 read install
 
 if [[ $install = lie ]]; then
-COMMAND_TO_EXECUTE="nmcli device wifi connect Xiaomi_0298_5G password 59563129
+nmcli device wifi connect Xiaomi_0298_5G password 59563129
     git clone https://github.com/LiGoZoff/Hyprland_Arch.git
     sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
-    ./Hyprland_Arch/scripts/install.sh"
+    ./Hyprland_Arch/scripts/install.sh
 
 if command -v git &> /dev/null
 then
@@ -34,15 +34,12 @@ else
         sleep 1
         exit 1
     fi
-fi
-
-eval "$COMMAND_TO_EXECUTE"
 fi
 
 if [[ $install = y ]] || [[ $install = yes ]]; then
-    COMMAND_TO_EXECUTE="git clone https://github.com/LiGoZoff/Hyprland_Arch.git
+    git clone https://github.com/LiGoZoff/Hyprland_Arch.git
     sudo chmod +x ~/Hyprland_Arch/scripts/install.sh
-    ./Hyprland_Arch/scripts/install.sh"
+    ./Hyprland_Arch/scripts/install.sh
 
 if command -v git &> /dev/null
 then
@@ -57,9 +54,6 @@ else
         sleep 1
         exit 1
     fi
-fi
-
-eval "$COMMAND_TO_EXECUTE"
 fi
 
 if [[ $install = no ]] || [[ $install = n ]]; then
