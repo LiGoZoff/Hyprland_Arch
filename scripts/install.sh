@@ -54,43 +54,48 @@ install_aur_helper() {
 
 if check_package_installed "yay"; then
     echo "yay already installed!"
-    exit 0
-fi
-
-if check_package_installed "paru"; then
+    helper_name="yay"
+elif check_package_installed "paru"; then
     echo "paru already installed!"
-    exit 0
+    helper_name="paru"
+else
+    helper_name=""
 fi
 
-while true; do
-    clear
-    echo "yay and paru not found."
-    echo "Choose what to install/Выберите, что установить:"
-    echo "  1) yay"
-    echo "  2) paru"
-    echo "  3) Exit"
+if [[ -z "$helper_name" ]]; then
+    while true; do
+        clear
+        echo "yay and paru not found."
+        echo "Choose what to install/Выберите, что установить:"
+        echo "  1) yay"
+        echo "  2) paru"
+        echo "  3) Exit"
 
-    read -p "Your answer/Ваш выбор (1/2/3): " choice
+        read -p "Your answer/Ваш выбор (1/2/3): " choice
 
-    case "$choice" in
-        1 )
-            install_aur_helper "yay"
-            break
-            ;;
-        2 )
-            install_aur_helper "paru"
-            break
-            ;;
-        3 )
-            echo "Installation canceled/Установка отменена."
-            exit 0
-            ;;
-        * )
-            echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-            sleep 1
-            ;;
-    esac
-done
+        case "$choice" in
+            1 )
+                install_aur_helper "yay"
+                helper_name="yay"
+                break
+                ;;
+            2 )
+                install_aur_helper "paru"
+                helper_name="paru"
+                break
+                ;;
+            3 )
+                echo "Installation canceled/Установка отменена."
+                exit 0
+                ;;
+            * )
+                echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+                sleep 1
+                ;;
+        esac
+    done
+fi
+clear
 
 sudo rm -rf /etc/pacman.conf
 sudo mv ~/Hyprland_Arch/conf/pacman.conf /etc/
