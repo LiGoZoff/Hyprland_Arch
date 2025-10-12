@@ -4,11 +4,11 @@ sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/vscode.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Brightness.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Volume.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/TouchPad.sh
-sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh
+sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_gif_mp4.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_mp3.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_png_jpg.sh
-sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh launcher-calc.sh launcher-emoji.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
