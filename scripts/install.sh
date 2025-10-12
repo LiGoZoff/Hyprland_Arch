@@ -13,6 +13,7 @@ sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
+done
 
 check_package_installed() {
     command -v "$1" &> /dev/null
