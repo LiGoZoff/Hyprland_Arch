@@ -159,14 +159,14 @@ while true; do
     read install
 
     if [[ $install = lie ]]; then
-        sudo pacman -S nerd-fonts brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman
-        $helper_name -S hyprpicker swww-git clipse hyprshot cava swengine neofetch youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed 
-        flatpak install flathub io.github.Soundux 
+        sudo pacman -S nerd-fonts brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman --noconfirm
+        $helper_name -S hyprpicker swww-git clipse hyprshot cava neofetch youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed --noconfirm
+        flatpak install -y flathub io.github.Soundux 
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
-        sudo pacman -S nerd-fonts hyprland blueman brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2
-        $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist  swengine python-pywalfox waybar-updates
+        sudo pacman -S nerd-fonts hyprland blueman brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 --noconfirm
+        $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
         break
     elif [[ $install = no ]] || [[ $install = n ]]; then
         echo "GoodBye"
@@ -177,6 +177,27 @@ while true; do
         sleep 1
     fi
 done
+
+while true; do
+    clear
+    echo "Do you want to install swengine for animated wallpapers installation?/Вы хотите установить swengine для установки анимированных обоев? (yes/no)"
+
+    read swengine
+
+    if [[ $swengine = yes ]] || [[ $swengine = y ]]; then
+        $helper_name -S swengine  --noconfirm
+        sleep 1
+        break
+    elif [[ $swengine = no ]] || [[ $swengine = n ]]; then
+        echo "Skipping..."
+        sleep 1
+        break
+    else
+        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+        sleep 1
+    fi
+done
+clear
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
@@ -196,16 +217,11 @@ gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
 
-clear
-echo "You use SDDM?/Вы используете SDDM? (yes/no)"
-
-read sddm
-
-if [[ $sddm = yes ]] || [[ $sddm = y ]]; then
+if check_package_installed "sddm"; then
     clear
-    echo "Do you want to install SDDM theme?/Вы хотите установить тему SDDM? (yes/no)"
-    read sddm1
-    if [[ $sddm1 = yes ]] || [[ $sddm1 = y ]]; then
+    echo "SDDM is already installed. Do you want to install the SDDM theme?/SDDM уже установлен. Хотите установить тему SDDM? (yes/no)"
+    read sddm_theme
+    if [[ $sddm_theme = yes ]] || [[ $sddm_theme = y ]]; then
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
         sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
         tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
@@ -227,36 +243,29 @@ if [[ $sddm = yes ]] || [[ $sddm = y ]]; then
         sleep 1
     fi
 else
-    echo "SDDM is not used. Do you want to install SDDM?/SDDM не используется. Хотите установить SDDM? (yes/no)"
+    clear
+    echo "SDDM is not installed. Do you want to install SDDM and the SDDM theme?/SDDM не установлен. Хотите установить SDDM и тему SDDM? (yes/no)"
     read install_sddm
     if [[ $install_sddm = yes ]] || [[ $install_sddm = y ]]; then
         sudo pacman -S --noconfirm sddm
         sudo systemctl enable sddm
         sudo systemctl start sddm
-        clear
-        echo "Do you want to install SDDM theme?/Вы хотите установить тему SDDM? (yes/no)"
-        read sddm1
-        if [[ $sddm1 = yes ]] || [[ $sddm1 = y ]]; then
-            sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-            sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
-            tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
-            tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz 
-            tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz 
-            tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz 
-            sudo rm -rf ~/Papirus-Light
-            mkdir -p ~/.icons
-            mkdir -p ~/.themes
-            sudo mv ~/Kripton-v40 ~/.themes
-            sudo mv ~/oreo_spark_lite_cursors ~/.icons
-            sudo mv ~/ePapirus-Dark ~/.icons
-            sudo mv ~/ePapirus ~/.icons
-            sudo mv ~/Papirus-Dark ~/.icons
-            sudo mv ~/Papirus ~/.icons
-            sudo mv ~/simple-sddm /usr/share/sddm/themes/
-        else
-            echo "Skipping..."
-            sleep 1
-        fi
+        sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
+        sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
+        tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
+        tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz 
+        tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz 
+        tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz 
+        sudo rm -rf ~/Papirus-Light
+        mkdir -p ~/.icons
+        mkdir -p ~/.themes
+        sudo mv ~/Kripton-v40 ~/.themes
+        sudo mv ~/oreo_spark_lite_cursors ~/.icons
+        sudo mv ~/ePapirus-Dark ~/.icons
+        sudo mv ~/ePapirus ~/.icons
+        sudo mv ~/Papirus-Dark ~/.icons
+        sudo mv ~/Papirus ~/.icons
+        sudo mv ~/simple-sddm /usr/share/sddm/themes/
     else
         echo "Skipping..."
         sleep 1
@@ -293,14 +302,7 @@ update_monitor_config() {
     fi
 }
 
-
-clear
-echo "Do you want to install Hyprland dotfiles?/Вы хотите установить Hyprland dotfiles? (yes/no)"
-read dots
-
-if [[ $dots = yes ]] || [[ $dots = y ]]; then
-    echo "Monitor Setup/Настройка монитора"
-    sleep 1
+echo "Monitor Setup/Настройка монитора"
     clear
     read -p "Is your main monitor wired or from a laptop?/Ваш основной монитор подключён по проводу или от ноутбука? (1 - laptop, 2 - wired): " device_choice_1_num
     while [[ "$device_choice_1_num" != "1" && "$device_choice_1_num" != "2" ]]; do
@@ -335,6 +337,14 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
 
     echo "Setup of the screen has been completed successfully!/Настройка экрана завершена успешно!"
 
+
+
+clear
+echo "Do you want to install Hyprland dotfiles?/Вы хотите установить Hyprland dotfiles? (yes/no)"
+read dots
+
+if [[ $dots = yes ]] || [[ $dots = y ]]; then
+    
     sudo rm -rf ~/.config/hypr
     [ -d ~/Hyprland_Arch/config/hypr ] && sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
     [ -d ~/Hyprland_Arch/config/wal ] && sudo mv ~/Hyprland_Arch/config/wal ~/.config/
@@ -352,6 +362,7 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
     [ -f ~/Hyprland_Arch/.bashrc ] && sudo mv ~/Hyprland_Arch/.bashrc /root
     sleep 1
+
 elif [[ $dots = lie ]]; then
     sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/KeyBinds.conf
     sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/scripts/KeyBinds.conf
@@ -373,6 +384,10 @@ elif [[ $dots = lie ]]; then
     sudo rm -rf ~/.bashrc
     sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
     sudo mv ~/Hyprland_Arch/.bashrc /root
+    sudo rm -rf /etc/locale.gen
+    sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
+    sudo localectl set-locale ru_RU.UTF-8
+    sudo locale-gen
     sleep 1
 
 elif [[ $dots = no ]] || [[ $dots = n ]]; then
@@ -392,8 +407,12 @@ if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     sudo mv $HOME/Hyprland_Arch/conf/pacman-chaotic-aur.conf /etc/pacman.conf
     sudo pacman -Syu
+elif [[ $install = no ]] || [[ $install = n ]]; then
+    echo "GoodBye"
+    sleep 1
+    exit 0
 else
-    echo "Skipping..."
+    echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
 fi
 
@@ -404,8 +423,12 @@ read secureboot
 
 if [[ $secureboot = yes ]] || [[ $secureboot = y ]]; then
     bash $HOME/Hyprland_Arch/scripts/secureboot.sh
+elif [[ $install = no ]] || [[ $install = n ]]; then
+    echo "GoodBye"
+    sleep 1
+    exit 0
 else
-    echo "Skipping..."
+    echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
 fi
 
@@ -428,13 +451,10 @@ fi
 clear
 echo "Presetting... Select the desired theme and wallpaper./Предварительная настройка... Выберите нужную тему и обои."
 
-if [[ $dots = yes ]] || [[ $dots = y ]]; then
-    nwg-look 
-    sleep 1
-fi
 
-read -p "Do you want to set a wallpaper? (yes/no): " wallpaper
-if [[ $wallpaper = yes ]] || [[ $wallpaper = y ]]; then
-    swengine
-    sleep 1
-fi
+nwg-look 
+sleep 1
+
+
+swengine
+sleep 1
