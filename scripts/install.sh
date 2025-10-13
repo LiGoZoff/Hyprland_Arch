@@ -100,28 +100,6 @@ clear
 sudo rm -rf /etc/pacman.conf
 sudo mv ~/Hyprland_Arch/conf/pacman.conf /etc/
 
-while true; do
-    clear
-    echo "If you have already selected the languages you want, skip this step(add Russian and English languages)./Если вы уже выбрали нужные вам языки, пропустите этот пункт(добавляет Русский и Английский язык). (skip/add)"
-
-    read locale
-
-    if [[ $locale = add ]] || [[ $locale = a ]]; then
-        sudo rm -rf /etc/locale.gen
-        sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
-        sudo localectl set-locale ru_RU.UTF-8
-        sudo locale-gen
-        break
-    elif [[ $locale = no ]] || [[ $locale = n ]] || [[ $locale = skip ]]; then
-        echo "Skipping..."
-        sleep 1
-        break
-    else
-        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-        sleep 1
-    fi
-done
-
 CONFIG_FILE="$HOME/Hyprland_Arch/config/hypr/conf/General.conf"
 TEXT_TO_FIND="us, ru"
 while true; do
