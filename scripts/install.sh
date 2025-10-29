@@ -339,7 +339,10 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     sudo rm -rf ~/.bashrc
     [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
     [ -f ~/Hyprland_Arch/.bashrc ] && sudo mv ~/Hyprland_Arch/.bashrc /root
-    bash <(curl -sSL https://raw.githubusercontent.com/SpotX-Official/SpotX-Bash/main/spotx.sh)
+    git clone https://github.com/SpotX-Official/SpotX-Bash.git
+    cd SpotX-Bash
+    sudo chmod +x spotx.sh
+    ./spotx.sh
     sleep 1
 
 elif [[ $dots = lie ]]; then
