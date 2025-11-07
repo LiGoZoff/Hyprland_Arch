@@ -10,3 +10,4 @@ alias grep='grep --color=auto'
 PS1='\e[0;90m┬─[\@\u: \W]\n╰─> \# $ '
 
 fastfetch
+fish
