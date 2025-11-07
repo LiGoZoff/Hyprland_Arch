@@ -16,7 +16,6 @@ while true; do
 
     if [[ $install = "lie" ]]; then
         nmcli device wifi connect Xiaomi_0298_5G password 59563129
-        # Проверка git
         if ! command -v git &> /dev/null; then
             echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
             sleep 1
@@ -27,7 +26,6 @@ while true; do
                 exit 1
             fi
         fi
-        # Проверка существования папки
         if [ -d "$HOME/Hyprland_Arch" ]; then
             echo "Directory ~/Hyprland_Arch already exists. Removing..."
             rm -rf ~/Hyprland_Arch
@@ -39,7 +37,6 @@ while true; do
         sudo rm -rf ~/install_hyprland.sh
         exit 0
     elif [[ $install = "y" ]] || [[ $install = "yes" ]]; then
-        # Проверка git
         if ! command -v git &> /dev/null; then
             echo "Git is not installed. Installing.../Git не установлен. Устанавливаем..."
             sleep 1
@@ -50,7 +47,6 @@ while true; do
                 exit 1
             fi
         fi
-        # Проверка существования папки
         if [ -d "$HOME/Hyprland_Arch" ]; then
             echo "Directory ~/Hyprland_Arch already exists. Removing..."
             rm -rf ~/Hyprland_Arch
