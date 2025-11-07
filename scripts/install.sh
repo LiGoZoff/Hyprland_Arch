@@ -28,7 +28,7 @@ install_aur_helper() {
         echo "git not found. Installing git..."
         sudo pacman -S --noconfirm git
         if [ $? -ne 0 ]; then
-            echo "Error: Failed to install git. Please install it manually and try again./Ошибка: Не удалось установить git. Пожалуйста, установите его вручную и попробуйте снова."
+            echo "Error: Failed to install git. Please install it manually and try again."
             exit 1
         fi
     fi
@@ -44,8 +44,8 @@ install_aur_helper() {
 
     (cd "$build_dir" && makepkg -si --noconfirm)
     if [ $? -ne 0 ]; then
-        echo "Error: Failed to build and install $helper_name. Dependencies may be missing or there may be a problem with the build./Ошибка: Не удалось собрать и установить $helper_name. Возможно, отсутствуют зависимости или возникли проблемы при сборке."
-        echo "Try installing dependencies manually or refer to the documentation./Попробуйте установить зависимости вручную или обратиться к документации."
+        echo "Error: Failed to build and install $helper_name. Dependencies may be missing or there may be a problem with the build."
+        echo "Try installing dependencies manually or refer to the documentation."
         exit 1
     fi
 
@@ -66,12 +66,12 @@ if [[ -z "$helper_name" ]]; then
     while true; do
         clear
         echo "yay and paru not found."
-        echo "Choose what to install/Выберите, что установить:"
+        echo "Choose what to install:"
         echo "  1) yay"
         echo "  2) paru"
         echo "  3) Exit"
 
-        read -p "Your answer/Ваш выбор (1/2/3): " choice
+        read -p "Your answer (1/2/3): " choice
 
         case "$choice" in
             1 )
@@ -85,7 +85,7 @@ if [[ -z "$helper_name" ]]; then
                 break
                 ;;
             3 )
-                echo "Installation canceled/Установка отменена."
+                echo "Installation canceled."
                 exit 0
                 ;;
             * )
@@ -104,7 +104,7 @@ CONFIG_FILE="$HOME/Hyprland_Arch/config/hypr/conf/General.conf"
 TEXT_TO_FIND="us, ru"
 while true; do
     clear
-    echo "Please specify your preferred keyboard layout languages/Пожалуйста укажите предпочтительные для вас языки раскладки клавиатуры(Example: us, ru):"
+    echo "Please specify your preferred keyboard layout languages (Example: us, ru):"
 
     read language
 
@@ -132,18 +132,18 @@ fi
 
 while true; do
     clear
-    echo "Installing important dependencies and components, this may take some time, are you ready to proceed?/Установка важных зависимостей и компонентов, это может занять некоторое время, вы готовы продолжить? (yes/no)"
+    echo "Installing important dependencies and components, this may take some time, are you ready to proceed? (yes/no)"
 
     read install
 
     if [[ $install = lie ]]; then
-        sudo pacman -S nerd-fonts brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman --noconfirm
-        $helper_name -S hyprpicker swww-git clipse hyprshot nekoray cava neofetch youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed --noconfirm
+        sudo pacman -S nerd-fonts brightnessctl nano ttf-ubuntu-font-family reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv proton-vpn-gtk-app fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman --noconfirm
+        $helper_name -S hyprpicker swww-git clipse hyprshot nekoray cava youtube-music-bin vesktop-bin yandex-music bluetuith-bin onlyoffice-bin ttf-font-icons vkbasalt lib32-vkbasalt proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates shim-signed --noconfirm
         flatpak install -y flathub io.github.Soundux 
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
-        sudo pacman -S nerd-fonts hyprland blueman brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 --noconfirm
+        sudo pacman -S nerd-fonts hyprland blueman brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish --noconfirm
         $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
         break
     elif [[ $install = no ]] || [[ $install = n ]]; then
@@ -158,12 +158,13 @@ done
 
 while true; do
     clear
-    echo "Do you want to install swengine for animated wallpapers installation?/Вы хотите установить swengine для установки анимированных обоев? (yes/no)"
+    echo "Do you want to install swengine for animated wallpapers installation? (yes/no)"
 
     read swengine
 
     if [[ $swengine = yes ]] || [[ $swengine = y ]]; then
         $helper_name -S swengine  --noconfirm
+        sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
         sleep 1
         break
     elif [[ $swengine = no ]] || [[ $swengine = n ]]; then
@@ -181,6 +182,7 @@ sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl enable power-profiles-daemon.service
 sudo systemctl start power-profiles-daemon.service
+chsh -s /usr/bin/fish
 systemctl --user enable gamemoded && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
@@ -193,11 +195,10 @@ sudo systemctl start autostart.service
 sudo systemctl enable autostart.service
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
-sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
 
 if check_package_installed "sddm"; then
     clear
-    echo "SDDM is already installed. Do you want to install the SDDM theme?/SDDM уже установлен. Хотите установить тему SDDM? (yes/no)"
+    echo "SDDM is already installed. Do you want to install the SDDM theme? (yes/no)"
     read sddm_theme
     if [[ $sddm_theme = yes ]] || [[ $sddm_theme = y ]]; then
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
@@ -222,10 +223,10 @@ if check_package_installed "sddm"; then
     fi
 else
     clear
-    echo "SDDM is not installed. Do you want to install SDDM and the SDDM theme?/SDDM не установлен. Хотите установить SDDM и тему SDDM? (yes/no)"
+    echo "SDDM is not installed. Do you want to install SDDM and the SDDM theme? (yes/no)"
     read install_sddm
     if [[ $install_sddm = yes ]] || [[ $install_sddm = y ]]; then
-        sudo pacman -S --noconfirm sddm
+        sudo pacman -S sddm --noconfirm
         sudo systemctl enable sddm
         sudo systemctl start sddm
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
@@ -282,7 +283,7 @@ update_monitor_config() {
 
 echo "Monitor Setup/Настройка монитора"
     clear
-    read -p "Is your main monitor wired or from a laptop?/Ваш основной монитор подключён по проводу или от ноутбука? (1 - laptop, 2 - wired): " device_choice_1_num
+    read -p "Is your main monitor wired or from a laptop?(1 - laptop, 2 - wired): " device_choice_1_num
     while [[ "$device_choice_1_num" != "1" && "$device_choice_1_num" != "2" ]]; do
         echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
         sleep 1
@@ -313,12 +314,12 @@ echo "Monitor Setup/Настройка монитора"
         update_monitor_config "$device_choice_2_num" 2
     fi
 
-    echo "Setup of the screen has been completed successfully!/Настройка экрана завершена успешно!"
+    echo "Setup of the screen has been completed successfully!"
 
 
 
 clear
-echo "Do you want to install Hyprland dotfiles?/Вы хотите установить Hyprland dotfiles? (yes/no)"
+echo "Do you want to install Hyprland dotfiles?(yes/no)"
 read dots
 
 if [[ $dots = yes ]] || [[ $dots = y ]]; then
@@ -332,17 +333,10 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     [ -d ~/Hyprland_Arch/config/rofi ] && sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
     [ -d ~/Hyprland_Arch/config/waybar ] && sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
     [ -d ~/Hyprland_Arch/config/clipse ] && sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
-    [ -f ~/Hyprland_Arch/conf/.swengine_after_run.sh ] && sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
-    sudo rm -rf /etc/hosts
-    [ -f ~/Hyprland_Arch/conf/hosts ] && sudo mv ~/Hyprland_Arch/conf/hosts /etc/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
     [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
-    [ -f ~/Hyprland_Arch/.bashrc ] && sudo mv ~/Hyprland_Arch/.bashrc /root
-    git clone https://github.com/SpotX-Official/SpotX-Bash.git
-    cd SpotX-Bash
-    sudo chmod +x spotx.sh
-    ./spotx.sh
+    [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     sleep 1
 
 elif [[ $dots = lie ]]; then
@@ -370,15 +364,21 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
     sudo localectl set-locale ru_RU.UTF-8
     sudo locale-gen
+    git clone https://github.com/SpotX-Official/SpotX-Bash.git
+    cd SpotX-Bash
+    sudo chmod +x spotx.sh
+    ./spotx.sh
     sleep 1
 
 elif [[ $dots = no ]] || [[ $dots = n ]]; then
-    echo "Skipping..."
+    echo "Goodbye"
     sleep 1
+    exit 0
 fi
 
+while true; do
 clear
-echo "Do you want install Chaotic-AUR?/Хотите установить Chaotic-AUR (yes/no)"
+echo "Do you want install Chaotic-AUR? (yes/no)"
 
 read chaotic
 
@@ -389,54 +389,75 @@ if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     sudo mv $HOME/Hyprland_Arch/conf/pacman-chaotic-aur.conf /etc/pacman.conf
     sudo pacman -Syu
-elif [[ $install = no ]] || [[ $install = n ]]; then
-    echo "GoodBye"
     sleep 1
-    exit 0
+    break
+elif [[ $install = no ]] || [[ $install = n ]]; then
+    echo "Skipping..."
+    sleep 1
+    break
 else
     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
 fi
+done
 
+while true; do
 clear
-echo "Whether you will put Windows as a second system (Dual Boot) with Secure Boot support./Будете ли вы ставить Windows второй системой? (yes/no)"
+echo " Do you need Secure Boot support? (yes/no)"
 
 read secureboot
 
 if [[ $secureboot = yes ]] || [[ $secureboot = y ]]; then
     bash $HOME/Hyprland_Arch/scripts/secureboot.sh
-elif [[ $install = no ]] || [[ $install = n ]]; then
-    echo "GoodBye"
     sleep 1
-    exit 0
+    break
+elif [[ $secureboot = no ]] || [[ $secureboot = n ]]; then
+    echo "Skipping..."
+    sleep 1
+    break
 else
     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
     sleep 1
 fi
+done
+
+#while true; do
+#clear
+#echo "Do you want install Zapret?(special for russian people)(yes/no)"
+#
+#read zapret
+#
+#if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
+  # sudo chmod +x ~/Hyprland_Arch/scripts/dpi.sh
+  # sudo rm -rf /etc/hosts
+ #  sudo mv ~/Hyprland_Arch/conf/hosts /etc/
+ #  bash $HOME/Hyprland_Arch/scripts/dpi.sh
+  # sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
+   #break
+#elif [[ $zapret = no ]] || [[ $zapret = n ]]; then
+#    echo "Skipping..."
+ #   sleep 1
+ #   break
+#else
+  #  echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+#fi
 
 clear
-echo "Do you want install Zapret?(special for russian people)/Будешь ставить обход блокировки ютуба и дс? (yes/no)"
-
-read zapret
-
-if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
-   sudo chmod +x ~/Hyprland_Arch/scripts/dpi.sh
-   sudo rm -rf /etc/hosts
-   sudo mv ~/Hyprland_Arch/conf/hosts /etc/
-   bash $HOME/Hyprland_Arch/scripts/dpi.sh
-   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
-else
-    echo "Skipping..."
-    sleep 1
-fi
-
-clear
-echo "Presetting... Select the desired theme and wallpaper./Предварительная настройка... Выберите нужную тему и обои."
+echo "Presetting... Select the desired theme and wallpaper."
 
 
 nwg-look 
 sleep 1
 
+read swengine
 
-swengine
-sleep 1
+if [[ $swengine = yes ]] || [[ $swengine = y ]]; then
+        swengine
+        sleep 1
+elif [[ $swengine = no ]] || [[ $swengine = n ]]; then
+        echo "Successfully installed"
+        sleep 1
+else
+        echo "Successfully installed"
+        sleep 1
+fi
