@@ -254,11 +254,11 @@ update_monitor_config() {
     local output_name="${output_prefix}-${monitor_number}"
 
     clear
-    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.) (Example, 1920x1080@60):" monitor_settings
+    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.) (Example, 1920x1080@60) (Default:1920x1080@60):" monitor_settings
     monitor_settings=${monitor_settings:-"${default_resolution}@${default_refresh_rate}"}
 
     local full_line="monitor=${output_name}, ${monitor_settings}, 0x0, 1"
-    local config_file="$HOME/Документы/Project/Hyprland_Arch/1.conf"
+    local config_file="$HOME//Hyprland_Arch/config/hypr/conf/General.conf"
 
     if grep -q "$placeholder_tag" "$config_file"; then
         sudo sed -i "s|^${placeholder_tag}|$full_line|" "$config_file"
