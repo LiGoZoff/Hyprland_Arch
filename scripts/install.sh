@@ -341,9 +341,9 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
 
 elif [[ $dots = lie ]]; then
     sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/KeyBinds.conf
-    sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/scripts/KeyBinds.conf
+    sudo mv ~/Hyprland_Arch/conf/1.conf ~/Hyprland_Arch/config/hypr/conf/KeyBinds.conf
     sudo rm -rf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
-    sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/scripts/Windowrule.conf
+    sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
     sudo rm -rf ~/.config/hypr
     sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
     sudo mv ~/Hyprland_Arch/config/wal ~/.config/
@@ -356,7 +356,7 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
-    sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
+    sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
     sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     sudo rm -rf /etc/locale.gen
     sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
