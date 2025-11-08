@@ -178,23 +178,6 @@ while true; do
 done
 clear
 
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-sudo systemctl enable power-profiles-daemon.service
-sudo systemctl start power-profiles-daemon.service
-chsh -s /usr/bin/fish
-systemctl --user enable gamemoded && systemctl --user start gamemode
-sudo chmod +x /usr/bin/gamemoderun
-sudo systemctl enable fstrim.timer
-sudo rfkill unblock all
-sudo mkdir -p /etc/init.d
-sudo mv ~/Hyprland_Arch/conf/autostart /etc/init.d/
-sudo chmod +x /etc/init.d/autostart
-sudo mv ~/Hyprland_Arch/conf/autostart.service /etc/systemd/system/
-sudo systemctl start autostart.service
-sudo systemctl enable autostart.service
-gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
-sudo mv ~/Hyprland_Arch/conf/blobdrop.sh blobdrop_gif_mp4.sh blobdrop_mp3.sh blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
 
 if check_package_installed "sddm"; then
     clear
@@ -373,6 +356,28 @@ elif [[ $dots = no ]] || [[ $dots = n ]]; then
     sleep 1
     exit 0
 fi
+
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth
+sudo systemctl enable power-profiles-daemon.service
+sudo systemctl start power-profiles-daemon.service
+chsh -s /bin/fish
+sudo -s /usr/bin/fish
+systemctl --user enable gamemoded && systemctl --user start gamemode
+sudo chmod +x /usr/bin/gamemoderun
+sudo systemctl enable fstrim.timer
+sudo rfkill unblock all
+sudo mkdir -p /etc/init.d
+sudo mv ~/Hyprland_Arch/conf/autostart /etc/init.d/
+sudo chmod +x /etc/init.d/autostart
+sudo mv ~/Hyprland_Arch/conf/autostart.service /etc/systemd/system/
+sudo systemctl start autostart.service
+sudo systemctl enable autostart.service
+gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+sudo mv ~/Hyprland_Arch/conf/blobdrop.sh $HOME/.local/share/nemo/scripts/
+sudo mv ~/Hyprland_Arch/conf/blobdrop_gif_mp4.sh $HOME/.local/share/nemo/scripts/
+sudo mv ~/Hyprland_Arch/conf/blobdrop_mp3.sh $HOME/.local/share/nemo/scripts/
+sudo mv ~/Hyprland_Arch/conf/blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
 
 while true; do
 clear
