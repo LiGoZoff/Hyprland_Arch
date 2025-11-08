@@ -386,10 +386,10 @@ if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
     sudo mv $HOME/Hyprland_Arch/conf/pacman-chaotic-aur.conf /etc/pacman.conf
-    sudo pacman -Syu
+    sudo pacman -Syu --noconfirm 
     sleep 1
     break
-elif [[ $install = no ]] || [[ $install = n ]]; then
+elif [[ $chaotic = no ]] || [[ $chaotic = n ]]; then
     echo "Skipping..."
     sleep 1
     break
