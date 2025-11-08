@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -S sbsigntools mokutil refind efitools --noconfirm 
 yay -S shim-signed --noconfirm 
-sudo refind-install --shim /usr/share/shim-signed/shimx64.efi --localkeys
+sudo refind-install --shim /usr/share/shim/shimx64.efi --localkeys
 sudo mkdir -p /usr/share/secureboot/keys 
 cd /usr/share/secureboot/keys/
 sudo openssl req -newkey rsa:4096 -nodes -keyout KEK.key -new -x509 -sha256 -days 3650 -subj "/CN=my Key Exchange Key/" -out KEK.crt
