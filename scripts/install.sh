@@ -447,15 +447,7 @@ echo "Presetting... Select the desired theme and wallpaper."
 nwg-look 
 sleep 1
 
-read swengine
+swengine
+sleep 1
 
-if [[ $swengine = yes ]] || [[ $swengine = y ]]; then
-        swengine
-        sleep 1
-elif [[ $swengine = no ]] || [[ $swengine = n ]]; then
-        echo "Successfully installed"
-        sleep 1
-else
-        echo "Successfully installed"
-        sleep 1
-fi
+echo "Successfuly installation"
