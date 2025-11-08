@@ -187,19 +187,13 @@ if check_package_installed "sddm"; then
     if [[ $sddm_theme = yes ]] || [[ $sddm_theme = y ]]; then
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
         sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
-        tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
-        tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz 
-        tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz 
-        tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz 
-        sudo rm -rf ~/Papirus-Light
         mkdir -p ~/.icons
         mkdir -p ~/.themes
-        sudo mv ~/Kripton-v40 ~/.themes
-        sudo mv ~/oreo_spark_lite_cursors ~/.icons
-        sudo mv ~/ePapirus-Dark ~/.icons
-        sudo mv ~/ePapirus ~/.icons
-        sudo mv ~/Papirus-Dark ~/.icons
-        sudo mv ~/Papirus ~/.icons
+        tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz ~/.themes/
+        tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz ~/.icons/
+        tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz ~/.icons/
+        tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz ~/.icons/
+        sudo rm -rf ~/.icons/Papirus-Light
         sudo mv ~/simple-sddm /usr/share/sddm/themes/
     else
         echo "Skipping..."
