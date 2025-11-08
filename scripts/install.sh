@@ -270,7 +270,7 @@ update_monitor_config() {
     local output_name="${output_prefix}-${monitor_number}"
 
     clear
-    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.)/Введите разрешение и частоту обновления для ${output_name} (При разрешении меньше Full HD, будут проблемы с Waybar.) (Example, 1920x1080@60) Default: [${default_resolution}@${default_refresh_rate}]: " monitor_settings
+    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.) (Example, 1920x1080@60) Default: [${default_resolution}@${default_refresh_rate}]: " monitor_settings
     monitor_settings=${monitor_settings:-"${default_resolution}@${default_refresh_rate}"}
 
     local full_line="monitor=${output_name}, ${monitor_settings}, 0x0, 1"
@@ -281,7 +281,7 @@ update_monitor_config() {
     fi
 }
 
-echo "Monitor Setup/Настройка монитора"
+echo "Monitor Setup"
     clear
     read -p "Is your main monitor wired or from a laptop?(1 - laptop, 2 - wired): " device_choice_1_num
     while [[ "$device_choice_1_num" != "1" && "$device_choice_1_num" != "2" ]]; do
@@ -354,12 +354,10 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
     sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
     sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
-    sudo rm -rf /etc/hosts
-    sudo mv ~/Hyprland_Arch/conf/hosts /etc/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
     sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
-    sudo mv ~/Hyprland_Arch/.bashrc /root
+    sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     sudo rm -rf /etc/locale.gen
     sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
     sudo localectl set-locale ru_RU.UTF-8
