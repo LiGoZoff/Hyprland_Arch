@@ -14,6 +14,93 @@ sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
 
+CONFIG_FILE="$HOME/Hyprland_Arch/config/hypr/conf/General.conf"
+TEXT_TO_FIND="us, ru"
+while true; do
+    clear
+    echo "Please specify your preferred keyboard layout languages (Example: us, ru):"
+
+    read language
+
+    if [[ "$language" =~ ^[a-zA-Z]{2}(,[ ]?[a-zA-Z]{2})*$ ]]; then
+        break
+    else
+        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+        sleep 1
+    fi
+done
+
+if grep -qF "$TEXT_TO_FIND" "$CONFIG_FILE"; then
+    sed -i "s/${TEXT_TO_FIND}/$language/g" "$CONFIG_FILE"
+fi
+
+clear
+
+update_monitor_config() {
+    local device_choice_num=$1
+    local monitor_number=$2
+    local placeholder_tag="#monitor${monitor_number}"
+    local output_prefix=""
+    local default_resolution="1920x1080"
+    local default_refresh_rate="60"
+
+    if [[ "$device_choice_num" == "1" ]]; then
+        output_prefix="eDP"
+    elif [[ "$device_choice_num" == "2" ]]; then
+        output_prefix="DP"
+    fi
+
+    local output_name="${output_prefix}-${monitor_number}"
+
+    clear
+    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.) (Example, 1920x1080@60) (Default:1920x1080@60):" monitor_settings
+    monitor_settings=${monitor_settings:-"${default_resolution}@${default_refresh_rate}"}
+
+    local full_line="monitor=${output_name}, ${monitor_settings}, 0x0, 1"
+    local config_file="$HOME//Hyprland_Arch/config/hypr/conf/General.conf"
+
+    if grep -q "$placeholder_tag" "$config_file"; then
+        sudo sed -i "s|^${placeholder_tag}|$full_line|" "$config_file"
+    fi
+}
+
+echo "Monitor Setup"
+    clear
+    read -p "Is your main monitor wired or from a laptop?(1 - laptop, 2 - wired): " device_choice_1_num
+    while [[ "$device_choice_1_num" != "1" && "$device_choice_1_num" != "2" ]]; do
+        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+        sleep 1
+        read -p "Is your main monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_1_num
+    done
+
+    update_monitor_config "$device_choice_1_num" 1
+
+    clear
+    read -p "Do you have a second monitor? (yes/no): " has_second_monitor
+    has_second_monitor=$(echo "$has_second_monitor" | tr '[:upper:]' '[:lower:]')
+
+    while [[ "$has_second_monitor" != "yes" && "$has_second_monitor" != "no" && "$has_second_monitor" != "y" && "$has_second_monitor" != "n" ]]; do
+        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+        sleep 1
+        read -p "Do you have a second monitor? (yes/no): " has_second_monitor
+        has_second_monitor=$(echo "$has_second_monitor" | tr '[:upper:]' '[:lower:]')
+    done
+
+    if [[ "$has_second_monitor" == "yes" || "$has_second_monitor" == "y" ]]; then
+        clear
+        read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
+        while [[ "$device_choice_2_num" != "1" && "$device_choice_2_num" != "2" ]]; do
+            echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+            sleep 1
+            read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
+        done
+        update_monitor_config "$device_choice_2_num" 2
+    fi
+
+    echo "Setup of the screen has been completed successfully!"
+
+clear
+
 check_package_installed() {
     command -v "$1" &> /dev/null
     return $?
@@ -95,40 +182,34 @@ if [[ -z "$helper_name" ]]; then
         esac
     done
 fi
-clear
 
-sudo rm -rf /etc/pacman.conf
-sudo mv ~/Hyprland_Arch/conf/pacman.conf /etc/
-
-CONFIG_FILE="$HOME/Hyprland_Arch/config/hypr/conf/General.conf"
-TEXT_TO_FIND="us, ru"
 while true; do
-    clear
-    echo "Please specify your preferred keyboard layout languages (Example: us, ru):"
+clear
+echo "Do you want install Chaotic-AUR? (yes/no)"
 
-    read language
+read chaotic
 
-    if [[ "$language" =~ ^[a-zA-Z]{2}(,[ ]?[a-zA-Z]{2})*$ ]]; then
-        break
-    else
-        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-        sleep 1
-    fi
+if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+    sudo mv $HOME/Hyprland_Arch/conf/pacman-chaotic-aur.conf /etc/pacman.conf
+    sudo pacman -Syu --noconfirm 
+    sleep 1
+    break
+elif [[ $chaotic = no ]] || [[ $chaotic = n ]]; then
+    sudo mv ~/Hyprland_Arch/conf/pacman.conf /etc/
+    echo "Skipping..."
+    sleep 1
+    break
+else
+    echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+    sleep 1
+fi
 done
 
-if grep -qF "$TEXT_TO_FIND" "$CONFIG_FILE"; then
-    sed -i "s/${TEXT_TO_FIND}/$language/g" "$CONFIG_FILE"
-fi
-
 echo "Successful"
-
-if check_package_installed "yay"; then
-    helper_name="yay"
-elif check_package_installed "paru"; then
-    helper_name="paru"
-else
-    helper_name="yay" 
-fi
 
 while true; do
     clear
@@ -229,91 +310,24 @@ else
 fi
 
 clear
-
-update_monitor_config() {
-    local device_choice_num=$1
-    local monitor_number=$2
-    local placeholder_tag="#monitor${monitor_number}"
-    local output_prefix=""
-    local default_resolution="1920x1080"
-    local default_refresh_rate="60"
-
-    if [[ "$device_choice_num" == "1" ]]; then
-        output_prefix="eDP"
-    elif [[ "$device_choice_num" == "2" ]]; then
-        output_prefix="DP"
-    fi
-
-    local output_name="${output_prefix}-${monitor_number}"
-
-    clear
-    read -p "Enter the resolution and refresh rate for ${output_name} (At resolutions less than Full HD, there will be problems with Waybar.) (Example, 1920x1080@60) (Default:1920x1080@60):" monitor_settings
-    monitor_settings=${monitor_settings:-"${default_resolution}@${default_refresh_rate}"}
-
-    local full_line="monitor=${output_name}, ${monitor_settings}, 0x0, 1"
-    local config_file="$HOME//Hyprland_Arch/config/hypr/conf/General.conf"
-
-    if grep -q "$placeholder_tag" "$config_file"; then
-        sudo sed -i "s|^${placeholder_tag}|$full_line|" "$config_file"
-    fi
-}
-
-echo "Monitor Setup"
-    clear
-    read -p "Is your main monitor wired or from a laptop?(1 - laptop, 2 - wired): " device_choice_1_num
-    while [[ "$device_choice_1_num" != "1" && "$device_choice_1_num" != "2" ]]; do
-        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-        sleep 1
-        read -p "Is your main monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_1_num
-    done
-
-    update_monitor_config "$device_choice_1_num" 1
-
-    clear
-    read -p "Do you have a second monitor? (yes/no): " has_second_monitor
-    has_second_monitor=$(echo "$has_second_monitor" | tr '[:upper:]' '[:lower:]')
-
-    while [[ "$has_second_monitor" != "yes" && "$has_second_monitor" != "no" && "$has_second_monitor" != "y" && "$has_second_monitor" != "n" ]]; do
-        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-        sleep 1
-        read -p "Do you have a second monitor? (yes/no): " has_second_monitor
-        has_second_monitor=$(echo "$has_second_monitor" | tr '[:upper:]' '[:lower:]')
-    done
-
-    if [[ "$has_second_monitor" == "yes" || "$has_second_monitor" == "y" ]]; then
-        clear
-        read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
-        while [[ "$device_choice_2_num" != "1" && "$device_choice_2_num" != "2" ]]; do
-            echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-            sleep 1
-            read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
-        done
-        update_monitor_config "$device_choice_2_num" 2
-    fi
-
-    echo "Setup of the screen has been completed successfully!"
-
-
-
-clear
 echo "Do you want to install Hyprland dotfiles?(yes/no)"
 read dots
 
 if [[ $dots = yes ]] || [[ $dots = y ]]; then
     
     sudo rm -rf ~/.config/hypr
-    [ -d ~/Hyprland_Arch/config/hypr ] && sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
-    [ -d ~/Hyprland_Arch/config/wal ] && sudo mv ~/Hyprland_Arch/config/wal ~/.config/
-    [ -d ~/Hyprland_Arch/config/kitty ] && sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
-    [ -d ~/Hyprland_Arch/config/fastfetch ] && sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-    [ -d ~/Hyprland_Arch/config/mako ] && sudo mv ~/Hyprland_Arch/config/mako ~/.config/
-    [ -d ~/Hyprland_Arch/config/rofi ] && sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
-    [ -d ~/Hyprland_Arch/config/waybar ] && sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
-    [ -d ~/Hyprland_Arch/config/clipse ] && sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
+    sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
+    sudo mv ~/Hyprland_Arch/config/wal ~/.config/
+    sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
+    sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+    sudo mv ~/Hyprland_Arch/config/mako ~/.config/
+    sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+    sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
+    sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
-    [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
-    [ -f ~/Hyprland_Arch/themes/.bashrc ] && sudo mv ~/Hyprland_Arch/themes/.bashrc /root
+    sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
+    sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     sleep 1
 
 elif [[ $dots = lie ]]; then
@@ -357,7 +371,7 @@ sudo systemctl enable power-profiles-daemon.service
 sudo systemctl start power-profiles-daemon.service
 chsh -s /bin/fish
 sudo -s /usr/bin/fish
-systemctl --user enable gamemoded && systemctl --user start gamemode
+systemctl --user enable gamemode && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
 sudo rfkill unblock all
@@ -375,36 +389,12 @@ sudo mv ~/Hyprland_Arch/conf/blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts
 
 while true; do
 clear
-echo "Do you want install Chaotic-AUR? (yes/no)"
-
-read chaotic
-
-if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
-    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-    sudo pacman-key --lsign-key 3056513887B78AEB
-    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-    sudo mv $HOME/Hyprland_Arch/conf/pacman-chaotic-aur.conf /etc/pacman.conf
-    sudo pacman -Syu --noconfirm 
-    sleep 1
-    break
-elif [[ $chaotic = no ]] || [[ $chaotic = n ]]; then
-    echo "Skipping..."
-    sleep 1
-    break
-else
-    echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-    sleep 1
-fi
-done
-
-while true; do
-clear
 echo " Do you need Secure Boot support? (yes/no)"
 
 read secureboot
 
 if [[ $secureboot = yes ]] || [[ $secureboot = y ]]; then
+    sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
     bash $HOME/Hyprland_Arch/scripts/secureboot.sh
     sleep 1
     break
@@ -418,26 +408,26 @@ else
 fi
 done
 
-#while true; do
-#clear
-#echo "Do you want install Zapret?(special for russian people)(yes/no)"
-#
-#read zapret
-#
-#if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
-  # sudo chmod +x ~/Hyprland_Arch/scripts/dpi.sh
-  # sudo rm -rf /etc/hosts
- #  sudo mv ~/Hyprland_Arch/conf/hosts /etc/
- #  bash $HOME/Hyprland_Arch/scripts/dpi.sh
-  # sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
-   #break
-#elif [[ $zapret = no ]] || [[ $zapret = n ]]; then
-#    echo "Skipping..."
- #   sleep 1
- #   break
-#else
-  #  echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-#fi
+while true; do
+clear
+echo "Do you want install Zapret?(special for russian people)(yes/no)"
+
+read zapret
+
+if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
+   sudo chmod +x ~/Hyprland_Arch/scripts/dpi.sh
+   bash $HOME/Hyprland_Arch/scripts/dpi.sh
+   cd ~
+   git clone https://github.com/LiGoZoff/zapret-windows-linux.git
+   echo "zapret находится в корневой директории"
+   break
+elif [[ $zapret = no ]] || [[ $zapret = n ]]; then
+     echo "Skipping..."
+     sleep 1
+     break
+else
+     echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
+fi
 
 clear
 echo "Presetting... Select the desired theme and wallpaper."
