@@ -88,6 +88,10 @@ echo "Monitor Setup"
 
     if [[ "$has_second_monitor" == "yes" || "$has_second_monitor" == "y" ]]; then
         clear
+        hyprpm update
+        hyprpm add https://github.com/shezdy/hyprsplit
+        hyprpm enable hyprsplit
+        clear
         read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
         while [[ "$device_choice_2_num" != "1" && "$device_choice_2_num" != "2" ]]; do
             echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
@@ -97,7 +101,8 @@ echo "Monitor Setup"
         update_monitor_config "$device_choice_2_num" 2
     fi
 
-    echo "Setup of the screen has been completed successfully!"
+    echo "Setup of the screen has been completed successfully! You need to edit plugin hyprsplit in .config/hypr/conf/General.conf"
+    sleep 3
 
 clear
 
@@ -137,6 +142,7 @@ install_aur_helper() {
     fi
 
     echo "$helper_name Successfully installed!"
+    sleep 1
 }
 
 if check_package_installed "yay"; then
@@ -190,6 +196,7 @@ echo "Do you want install Chaotic-AUR? (yes/no)"
 read chaotic
 
 if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
+clear
     sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
     sudo pacman-key --lsign-key 3056513887B78AEB
     sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
@@ -199,6 +206,7 @@ if [[ $chaotic = yes ]] || [[ $chaotic = y ]]; then
     sleep 1
     break
 elif [[ $chaotic = no ]] || [[ $chaotic = n ]]; then
+clear
     sudo mv ~/Hyprland_Arch/conf/pacman.conf /etc/
     echo "Skipping..."
     sleep 1
@@ -218,13 +226,13 @@ while true; do
     read install
 
     if [[ $install = lie ]]; then
-        sudo pacman -S nerd-fonts zip brightnessctl ranger nano ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
+        sudo pacman -S nerd-fonts zip brightnessctl cpio ranger nano ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau lib32-vulkan-radeon vulkan-radeon glu lib32-glu vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
         $helper_name -S hyprpicker swww-git clipse hyprshot walcord v2rayn cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates --noconfirm
         flatpak install -y flathub io.github.Soundux 
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
-        sudo pacman -S nerd-fonts zip hyprland blueman brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
+        sudo pacman -S nerd-fonts zip hyprland blueman cpio brightnessctl ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
         $helper_name -S swww-git clipse hyprshot cava ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
         break
     elif [[ $install = no ]] || [[ $install = n ]]; then
