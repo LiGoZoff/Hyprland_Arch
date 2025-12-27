@@ -88,10 +88,6 @@ echo "Monitor Setup"
 
     if [[ "$has_second_monitor" == "yes" || "$has_second_monitor" == "y" ]]; then
         clear
-        hyprpm update
-        hyprpm add https://github.com/shezdy/hyprsplit
-        hyprpm enable hyprsplit
-        clear
         read -p "Is your second monitor wired or from a laptop? (1 - laptop, 2 - wired): " device_choice_2_num
         while [[ "$device_choice_2_num" != "1" && "$device_choice_2_num" != "2" ]]; do
             echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
