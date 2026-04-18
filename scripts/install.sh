@@ -432,7 +432,7 @@ elif [[ $zapret = no ]] || [[ $zapret = n ]]; then
 else
      echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
 fi
-
+done
 clear
 echo "Presetting... Select the desired theme and wallpaper."
 
