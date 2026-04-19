@@ -224,7 +224,7 @@ while true; do
 
     if [[ $install = lie ]]; then
         sudo pacman -S nerd-fonts zip brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
-        $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs lib32-gsttreamer swww proton-ge-custom-bin clipse hyprshot walcord happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates
+        $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs lib32-gsttreamer swww clipse hyprshot walcord happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates proton-ge-custom-bin
         flatpak install -y flathub io.github.Soundux 
         sudo pacman -Rns wofi dunst vim dolphin
         break
@@ -356,7 +356,6 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     mv ~/Hyprland_Arch/config/clipse ~/.config/
-    sudo mv ~/Hyprland_Arch/conf/.waypaper_after_run.sh ~/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
     sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
@@ -381,8 +380,6 @@ sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 sudo systemctl enable power-profiles-daemon.service
 sudo systemctl start power-profiles-daemon.service
-chsh -s /bin/fish
-sudo -s /usr/bin/fish
 systemctl --user enable gamemode && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
@@ -447,3 +444,5 @@ clear
 echo "Successfuly installation"
 rm -rf Hyprland_Arch
 rm -rf install_hyprland.sh
+chsh -s /bin/fish
+sudo -s /usr/bin/fish
