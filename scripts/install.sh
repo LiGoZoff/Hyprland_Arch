@@ -243,16 +243,15 @@ done
 
 while true; do
     clear
-    echo "Do you want to install swengine for animated wallpapers installation? (yes/no)"
+    echo "Do you want to install waypaper for animated wallpapers installation? (yes/no)"
 
-    read swengine
+    read waypaper
 
-    if [[ $swengine = yes ]] || [[ $swengine = y ]]; then
-        $helper_name -S swengine  --noconfirm
-        sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
+    if [[ $waypaper = yes ]] || [[ $waypaper = y ]]; then
+        $helper_name -S waypaper  --noconfirm
         sleep 1
         break
-    elif [[ $swengine = no ]] || [[ $swengine = n ]]; then
+    elif [[ $waypaper = no ]] || [[ $waypaper = n ]]; then
         echo "Skipping..."
         sleep 1
         break
@@ -354,7 +353,7 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     mv ~/Hyprland_Arch/config/clipse ~/.config/
-    sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
+    sudo mv ~/Hyprland_Arch/conf/.waypaper_after_run.sh ~/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
     sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
@@ -440,13 +439,7 @@ else
 fi
 done
 clear
-echo "Presetting... Select the desired theme and wallpaper."
-
-
-nwg-look 
-sleep 1
-
-swengine
-sleep 1
 
 echo "Successfuly installation"
+rm -rf Hyprland_Arch
+rm -rf install_hyprland.sh
