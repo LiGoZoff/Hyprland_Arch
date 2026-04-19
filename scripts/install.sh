@@ -347,13 +347,13 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
     sudo rm -rf ~/.config/hypr
     sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
-    sudo mv ~/Hyprland_Arch/config/wal ~/.config/
-    sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
-    sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-    sudo mv ~/Hyprland_Arch/config/mako ~/.config/
-    sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
-    sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
-    sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
+    mv ~/Hyprland_Arch/config/wal ~/.config/
+    mv ~/Hyprland_Arch/config/kitty ~/.config/
+    mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+    mv ~/Hyprland_Arch/config/mako ~/.config/
+    mv ~/Hyprland_Arch/config/rofi ~/.config/
+    mv ~/Hyprland_Arch/config/waybar ~/.config/
+    mv ~/Hyprland_Arch/config/clipse ~/.config/
     sudo mv ~/Hyprland_Arch/conf/.swengine_after_run.sh ~/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     sudo rm -rf ~/.bashrc
