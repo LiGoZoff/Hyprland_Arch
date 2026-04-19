@@ -125,7 +125,7 @@ install_aur_helper() {
     if [ -d "$build_dir" ]; then
         rm -rf "$build_dir"
     fi
-    sudo pacman -S base-devel
+    sudo pacman -S base-devel --noconfirm
     git clone "$repo_url" "$build_dir"
     if [ $? -ne 0 ]; then
         exit 1
