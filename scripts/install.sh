@@ -248,6 +248,8 @@ while true; do
     read waypaper
 
     if [[ $waypaper = yes ]] || [[ $waypaper = y ]]; then
+    mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
+    sudo chmod +x $HOME/.config/waypaper/post_scripts.sh
         $helper_name -S waypaper  --noconfirm
         sleep 1
         break
