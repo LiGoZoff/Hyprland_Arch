@@ -8,6 +8,7 @@ sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_gif_mp4.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_mp3.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_png_jpg.sh
+sudo chmod +x $HOME/Hyprland_Arch/conf/mp4togif.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
@@ -397,6 +398,7 @@ sudo mv ~/Hyprland_Arch/conf/blobdrop.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_gif_mp4.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_mp3.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
+sudo mv ~/Hyprland_Arch/conf/mp4togif.sh $HOME/.local/share/nemo/scripts/
 
 while true; do
 clear
