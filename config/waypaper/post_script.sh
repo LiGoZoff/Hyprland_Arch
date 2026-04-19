@@ -4,7 +4,7 @@ WALLPAPER="$1"
 
 cp "$WALLPAPER" "$HOME/Pictures/Wallpapers/.wallpaper_current"
 
-sudo cp "$WALLPAPER" "/usr/share/sddm/themes/simple-sddm/Backgrounds/wallpaper_current.gif"
+cp "$WALLPAPER" "/usr/share/sddm/themes/simple-sddm/Backgrounds/wallpaper_current.gif"
 
 pkill -SIGUSR1 waybar
 
