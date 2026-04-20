@@ -334,6 +334,7 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
     sudo mv ~/Hyprland_Arch/config/mako ~/.config/
     sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+    mv ~/Hyprland_Arch/config/fish ~/.config/
     sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
     sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
@@ -350,6 +351,7 @@ elif [[ $dots = lie ]]; then
     sudo rm -rf ~/.config/hypr
     sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
     mv ~/Hyprland_Arch/config/wal ~/.config/
+    mv ~/Hyprland_Arch/config/fish ~/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
     mv ~/Hyprland_Arch/config/mako ~/.config/
