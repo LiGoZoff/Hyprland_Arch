@@ -224,13 +224,20 @@ while true; do
 
     if [[ $install = lie ]]; then
         sudo pacman -S nerd-fonts zip brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
-        $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs lib32-gsttreamer swww clipse hyprshot walcord happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates proton-ge-custom-bin
-        flatpak install -y flathub io.github.Soundux 
+        $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs waypaper lib32-gsttreamer swww clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates proton-ge-custom-bin
+        cd  $HOME/.cache/yay/
+        git clone https://aur.archlinux.org/walcord.git
+        cd walcord
+        sed -i 's/pip install -r requirements-linux.txt/pip install pywal pyinstaller/g' PKGBUILD
+        makepkg -si
+        flatpak install -y flathub io.github.Soundux
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
         sudo pacman -S nerd-fonts zip hyprland blueman cpio brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
-        $helper_name -S clipse hyprshot hyprquickframe-git cava ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
+        $helper_name -S clipse hyprshot hyprquickframe-git cava waypaper ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
+        
+        sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = no ]] || [[ $install = n ]]; then
         echo "GoodBye"
@@ -241,30 +248,7 @@ while true; do
         sleep 1
     fi
 done
-
-while true; do
-    clear
-    echo "Do you want to install waypaper for animated wallpapers installation? (yes/no)"
-
-    read waypaper
-
-    if [[ $waypaper = yes ]] || [[ $waypaper = y ]]; then
-    mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
-    sudo chmod +x $HOME/.config/waypaper/post_script.sh
-        $helper_name -S waypaper  --noconfirm
-        sleep 1
-        break
-    elif [[ $waypaper = no ]] || [[ $waypaper = n ]]; then
-        echo "Skipping..."
-        sleep 1
-        break
-    else
-        echo -e "\e[31mERROR: WRONG ANSWER\e[0m"
-        sleep 1
-    fi
-done
 clear
-
 
 if check_package_installed "sddm"; then
     clear
@@ -341,6 +325,8 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     sudo rm -rf ~/.bashrc
     sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
     sudo mv ~/Hyprland_Arch/themes/.bashrc /root
+    mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
+    sudo chmod +x $HOME/.config/waypaper/post_script.sh
     sleep 1
 
 elif [[ $dots = lie ]]; then
@@ -350,6 +336,8 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/conf/2.conf ~/Hyprland_Arch/config/hypr/conf/Windowrule.conf
     sudo rm -rf ~/.config/hypr
     sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
+    mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
+    sudo chmod +x $HOME/.config/waypaper/post_script.sh
     mv ~/Hyprland_Arch/config/wal ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
