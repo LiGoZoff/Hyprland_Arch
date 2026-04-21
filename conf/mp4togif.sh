@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ffmpeg -i *.mp4 *.gif
+parallel ffmpeg -i {} {.}.gif ::: *.mp4
