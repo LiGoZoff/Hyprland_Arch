@@ -4,6 +4,7 @@ sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/vscode.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Brightness.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Volume.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/TouchPad.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/waybar/scripts/generate-config.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_gif_mp4.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_mp3.sh
@@ -223,7 +224,7 @@ while true; do
     read install
 
     if [[ $install = lie ]]; then
-        sudo pacman -S nerd-fonts zip brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
+        sudo pacman -S nerd-fonts zip brightnessctl parallel qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
         $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs waypaper lib32-gsttreamer swww clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates proton-ge-custom-bin
         cd  $HOME/.cache/yay/
         git clone https://aur.archlinux.org/walcord.git
