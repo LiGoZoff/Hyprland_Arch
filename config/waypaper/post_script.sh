@@ -10,6 +10,7 @@ pkill -SIGUSR1 waybar
 
 rm -rf "$HOME/.cache/wal"
 wal -i "$HOME/Pictures/Wallpapers/.wallpaper_current"
+bash ~/.config/waybar/scripts/generate-config.sh
 
 pkill -SIGUSR2 waybar
 hyprctl reload

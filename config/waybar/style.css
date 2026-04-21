@@ -193,9 +193,27 @@ button:hover {
 	border-radius: 20 0 0 20;	
 }
 tooltip {
-	background: @bg;
+	background: @background;
 	margin: 20px;
 	padding: 15px;
 	border: 20px solid rgba(100, 114, 125, 0);
 	border-radius: 10px;
+	color: @foreground;
+}
+
+tip {
+	background: @background;
+	color: @foreground;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+calendar {
+	background: @background;
+	color: @foreground;
+}
+
+calendar.view {
+	background: @background;
+	color: @color6;
 }
