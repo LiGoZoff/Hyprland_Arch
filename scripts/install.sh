@@ -395,7 +395,7 @@ sudo mv ~/Hyprland_Arch/conf/mp4togif.sh $HOME/.local/share/nemo/scripts/
 while true; do
 clear
 
-awww-daemon & awww img $HOME/Pictures/Wallpapers/Wallpaper.png --transition-type simple & wal -i $HOME/Pictures/Wallpapers/Wallpaper.png & hyprctl reload
+awww-daemon & awww img $HOME/Pictures/Wallpapers/Wallpaper.png --transition-type simple & sed -i "s|^wallpaper =.*|wallpaper = $HOME/Pictures/Wallpapers/Wallpaper.png|" ~/.config/waypaper/config.ini & wal -i $HOME/Pictures/Wallpapers/Wallpaper.png & hyprctl reload
 
 echo " Do you need Secure Boot support? (yes/no)"
 
