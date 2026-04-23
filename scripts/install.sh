@@ -314,16 +314,17 @@ read dots
 if [[ $dots = yes ]] || [[ $dots = y ]]; then
     
     sudo rm -rf ~/.config/hypr
-    sudo mv ~/Hyprland_Arch/config/hypr ~/.config/
-    sudo mv ~/Hyprland_Arch/config/wal ~/.config/
-    sudo mv ~/Hyprland_Arch/config/kitty ~/.config/
-    sudo mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-    sudo mv ~/Hyprland_Arch/config/mako ~/.config/
-    sudo mv ~/Hyprland_Arch/config/rofi ~/.config/
+    mv ~/Hyprland_Arch/config/hypr ~/.config/
+    mv ~/Hyprland_Arch/config/wal ~/.config/
+    mv ~/Hyprland_Arch/config/kitty ~/.config/
+    mv ~/Hyprland_Arch/config/fastfetch ~/.config/
+    mv ~/Hyprland_Arch/config/mako ~/.config/
+    mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
-    sudo mv ~/Hyprland_Arch/config/waybar ~/.config/
-    sudo mv ~/Hyprland_Arch/config/clipse ~/.config/
+    mv ~/Hyprland_Arch/config/waybar ~/.config/
+    mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
+    mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
     sudo rm -rf ~/.bashrc
     sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
     sudo mv ~/Hyprland_Arch/themes/.bashrc /root
@@ -349,6 +350,7 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
+    mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
     mv ~/Hyprland_Arch/conf/Scripts ~/.config/fish/
     sudo rm -rf ~/.bashrc
     sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
@@ -392,6 +394,9 @@ sudo mv ~/Hyprland_Arch/conf/mp4togif.sh $HOME/.local/share/nemo/scripts/
 
 while true; do
 clear
+
+awww-daemon & awww img $HOME/Pictures/Wallpapers/Wallpaper.png --transition-type simple & wal -i $HOME/Pictures/Wallpapers/Wallpaper.png & hyprctl reload
+
 echo " Do you need Secure Boot support? (yes/no)"
 
 read secureboot
