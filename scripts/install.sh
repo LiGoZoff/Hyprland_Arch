@@ -10,6 +10,7 @@ sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_gif_mp4.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_mp3.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_png_jpg.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/mp4togif.sh
+sudo chmod +X $HOME/Hyprland_Arch/conf/Scripts/proxy_toggle.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
@@ -348,6 +349,7 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
+    mv ~/Hyprland_Arch/conf/Scripts ~/.config/fish/
     sudo rm -rf ~/.bashrc
     sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
     sudo mv ~/Hyprland_Arch/themes/.bashrc /root
