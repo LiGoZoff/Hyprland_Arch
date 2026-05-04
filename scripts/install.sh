@@ -430,6 +430,7 @@ if [[ $zapret = yes ]] || [[ $zapret = y ]]; then
    cd ~
    git clone https://github.com/LiGoZoff/zapret-windows-linux.git
    echo "zapret находится в корневой директории"
+   sleep 1
    break
 elif [[ $zapret = no ]] || [[ $zapret = n ]]; then
      echo "Skipping..."
