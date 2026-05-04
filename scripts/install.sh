@@ -322,6 +322,7 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
+    sed -i "s/\$USER/$USER/g" $HOME/.config/waybar/style.css
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
@@ -348,6 +349,7 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/mako ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
+    sed -i "s/\$USER/$USER/g" $HOME/.config/waybar/style.css
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
