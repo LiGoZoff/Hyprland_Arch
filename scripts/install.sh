@@ -443,7 +443,5 @@ done
 clear
 
 echo "Successfuly installation"
-rm -rf Hyprland_Arch
-rm -rf install_hyprland.sh
 chsh -s /bin/fish
 sudo -s /usr/bin/fish
