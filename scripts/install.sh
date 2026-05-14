@@ -317,18 +317,17 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     mv ~/Hyprland_Arch/config/hypr ~/.config/
     mv ~/Hyprland_Arch/config/wal ~/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
+    
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
     mv ~/Hyprland_Arch/config/mako ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
+    sudo mv ~/Hyprland_Arch/config/fish /root/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     sed -i "s/\$USER/$USER/g" $HOME/.config/waybar/style.css
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
-    sudo rm -rf ~/.bashrc
-    sudo mv ~/Hyprland_Arch/themes/.bashrc ~/
-    sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
     sudo chmod +x $HOME/.config/waypaper/post_script.sh
     sleep 1
@@ -344,6 +343,7 @@ elif [[ $dots = lie ]]; then
     sudo chmod +x $HOME/.config/waypaper/post_script.sh
     mv ~/Hyprland_Arch/config/wal ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
+    sudo mv ~/Hyprland_Arch/config/fish /root/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
     mv ~/Hyprland_Arch/config/mako ~/.config/
@@ -354,9 +354,6 @@ elif [[ $dots = lie ]]; then
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
     mv ~/Hyprland_Arch/conf/Scripts ~/.config/fish/
-    sudo rm -rf ~/.bashrc
-    sudo cp ~/Hyprland_Arch/themes/.bashrc ~/
-    sudo mv ~/Hyprland_Arch/themes/.bashrc /root
     sudo rm -rf /etc/locale.gen
     sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
     sudo localectl set-locale ru_RU.UTF-8
