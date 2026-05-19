@@ -226,7 +226,7 @@ while true; do
     read install
 
     if [[ $install = lie ]]; then
-        sudo pacman -S nerd-fonts zip brightnessctl zoxide parallel qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
+        sudo pacman -S nerd-fonts zip brightnessctl zoxide parallel qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader firefox lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2
         $helper_name -S hyprpicker hyprquickframe-git lib32-gst-plugins-base-libs protonplus waypaper linux-wallpaperengine-git awww lib32-gsttreamer clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin proton-ge-custom-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates proton-ge-custom-bin
         cd  $HOME/.cache/yay/
         git clone https://aur.archlinux.org/walcord.git
@@ -237,7 +237,7 @@ while true; do
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
-        sudo pacman -S nerd-fonts zip hyprland blueman cpio brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon mako mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
+        sudo pacman -S nerd-fonts zip hyprland blueman cpio brightnessctl qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
         $helper_name -S clipse hyprshot hyprquickframe-git cava waypaper awww ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
         
         sudo pacman -Rns wofi dunst vim dolphin
@@ -320,7 +320,7 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     mv ~/Hyprland_Arch/config/kitty ~/.config/
     
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-    mv ~/Hyprland_Arch/config/mako ~/.config/
+    mv ~/Hyprland_Arch/config/swaync ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/fish ~/.config/
     sudo mv ~/Hyprland_Arch/config/fish /root/.config/
@@ -347,7 +347,7 @@ elif [[ $dots = lie ]]; then
     sudo mv ~/Hyprland_Arch/config/fish /root/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
-    mv ~/Hyprland_Arch/config/mako ~/.config/
+    mv ~/Hyprland_Arch/config/swaync ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
     sed -i "s/\$USER/$USER/g" $HOME/.config/waybar/style.css
