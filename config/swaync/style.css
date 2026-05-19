@@ -1,0 +1,39 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+:root {
+  --cc-bg: @background;
+  --noti-border-color: @color8;
+  --noti-bg: @background;
+  --noti-bg-alpha: 1.0;
+  --noti-bg-darker: @color8;
+  --noti-bg-hover: @color2;
+  --noti-bg-focus: @background;
+  --noti-close-bg: @color8;
+  --noti-close-bg-hover: @color8;
+  --text-color: @color7;
+  --text-color-disabled: @color8;
+  --bg-selected: @color2;
+  --notification-icon-size: 64px;
+  --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+  --border-radius: 14px;
+}
+
+notificationwindow, blankwindow {
+  background: transparent;
+}
+
+.floating-notifications .notification {
+    opacity: 1.0;
+    background: @background;
+    border: 1px solid @color8;
+    border-radius: var(--border-radius);
+    color: @color7;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
