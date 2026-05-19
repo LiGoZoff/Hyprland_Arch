@@ -14,6 +14,7 @@ sudo chmod +X $HOME/Hyprland_Arch/conf/Scripts/proxy_toggle.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/rofi/config-menu.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
 
