@@ -461,8 +461,7 @@ elif [[ $dots = lie ]]; then
     echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
 sudo mv ~/Hyprland_Arch/conf/autostart ~/.config/hypr/scripts/
 sudo chmod +x ~/.config/hypr/scripts/auto start
-grep -q "autostart" ~/.config/hypr/conf/AutoStart.conf || echo -e "\nexec-once = ~/.config/hypr/scripts/autostart" >> ~/.config/hypr/conf/AutoStart.conf
-
+grep -q "autostart" ~/.config/hypr/conf/StartUp.conf || echo -e "\nexec-once = ~/.config/hypr/scripts/autostart" >> ~/.config/hypr/conf/StartUp.conf
 
     #git clone https://github.com/SpotX-Official/SpotX-Bash.git
     #cd SpotX-Bash
