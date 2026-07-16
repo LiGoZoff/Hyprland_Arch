@@ -247,7 +247,6 @@ done
 if [ ${#VALID_PACKAGES[@]} -ne 0 ]; then
     echo "Установка системных пакетов..."
     sudo pacman -S --needed --noconfirm "${VALID_PACKAGES[@]}"
-else
 fi
 
 AUR_PACKAGES=(
@@ -269,7 +268,6 @@ done
 if [ ${#VALID_AUR_PACKAGES[@]} -ne 0 ]; then
     echo "Установка AUR-пакетов..."
     yay -S --needed --noconfirm "${VALID_AUR_PACKAGES[@]}"
-else
 fi
 
         cd  $HOME/.cache/yay/
@@ -311,7 +309,6 @@ done
 if [ ${#VALID_PACKAGES[@]} -ne 0 ]; then
     echo "Установка системных пакетов..."
     sudo pacman -S --needed --noconfirm "${VALID_PACKAGES[@]}"
-else
 fi
  
 AUR_PACKAGES=(
@@ -334,7 +331,6 @@ done
 if [ ${#VALID_AUR_PACKAGES[@]} -ne 0 ]; then
     echo "Установка AUR-пакетов..."
     yay -S --needed --noconfirm "${VALID_AUR_PACKAGES[@]}"
-else
 fi
         
         sudo pacman -Rns wofi dunst vim dolphin
