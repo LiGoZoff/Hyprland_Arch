@@ -101,7 +101,7 @@ echo "Monitor Setup"
         update_monitor_config "$device_choice_2_num" 2
     fi
 
-    echo "Setup of the screen has been completed successfully! You need to edit plugin hyprsplit in .config/hypr/conf/General.conf"
+    echo "Setup of the screen has been completed successfully!"
     sleep 3
 
 clear
