@@ -250,7 +250,7 @@ if [ ${#VALID_PACKAGES[@]} -ne 0 ]; then
 fi
 
 AUR_PACKAGES=(
-    hyprpicker hyprquickframe-git protonplus waypaper ananicy-cpp ananicy-rules-git linux-wallpaperengine-git awww clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates
+    hyprpicker hyprquickframe-git protonplus waypaper ananicy-cpp ananicy-rules-git linux-wallpaperengine-git awww clipse hyprshot happ-desktop-bin cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates
 )
 
 VALID_AUR_PACKAGES=()
