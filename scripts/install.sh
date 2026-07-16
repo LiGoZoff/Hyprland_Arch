@@ -226,8 +226,50 @@ while true; do
     read install
 
     if [[ $install = lie ]]; then
-      sudo pacman -S --needed nerd-fonts zip brightnessctl zoxide parallel udiskie qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman
-$helper_name -S --needed hyprpicker hyprquickframe-git protonplus waypaper ananicy-cpp ananicy-rules-git linux-wallpaperengine-git awww clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates
+      PACKAGES=(
+     nerd-fonts zip brightnessctl zoxide parallel udiskie qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman
+)
+
+VALID_PACKAGES=()
+
+echo "Фильтрация списка пакетов Pacman..."
+for pkg in "${PACKAGES[@]}"; do
+
+    if pacman -Si "$pkg" &>/dev/null; then
+        VALID_PACKAGES+=("$pkg")
+    else
+        echo -e "\e[33m[ПРОПУСК] Пакет '$pkg' не найден в официальных репозиториях.\e[0m"
+    fi
+done
+
+if [ ${#VALID_PACKAGES[@]} -ne 0 ]; then
+    echo "Установка системных пакетов..."
+    sudo pacman -S --needed --noconfirm "${VALID_PACKAGES[@]}"
+else
+fi
+
+AUR_PACKAGES=(
+    hyprpicker hyprquickframe-git protonplus waypaper ananicy-cpp ananicy-rules-git linux-wallpaperengine-git awww clipse hyprshot happ cava vesktop-bin bluetuith-bin ttf-font-icons vkbasalt lib32-vkbasalt osu-lazer-bin xone-dkms-git dxvk-bin vkd3d-proton-bin ttf-ionicons protontricks bluez blobdrop-git bluez-utils bluez-deprecated-tools cliphist python-pywalfox visual-studio-code-bin spotify portproton waybar-updates
+)
+
+VALID_AUR_PACKAGES=()
+
+echo "Фильтрация списка AUR-пакетов..."
+for pkg in "${AUR_PACKAGES[@]}"; do
+
+    if yay -Si "$pkg" &>/dev/null; then
+        VALID_AUR_PACKAGES+=("$pkg")
+    else
+        echo -e "\e[33m[ПРОПУСК] AUR-пакет '$pkg' не найден или недоступен.\e[0m"
+    fi
+done
+
+if [ ${#VALID_AUR_PACKAGES[@]} -ne 0 ]; then
+    echo "Установка AUR-пакетов..."
+    yay -S --needed --noconfirm "${VALID_AUR_PACKAGES[@]}"
+else
+fi
+
         cd  $HOME/.cache/yay/
         git clone https://aur.archlinux.org/walcord.git
         cd walcord
@@ -237,8 +279,61 @@ $helper_name -S --needed hyprpicker hyprquickframe-git protonplus waypaper anani
         sudo pacman -Rns wofi dunst vim dolphin
         break
     elif [[ $install = yes ]] || [[ $install = y ]]; then
-        sudo pacman -S nerd-fonts zip hyprland blueman cpio brightnessctl udiskie qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 ttf-ubuntu-font-family ttf-hack firefox ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar pamixer network-manager-applet nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 fish qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 --noconfirm
-        $helper_name -S clipse hyprshot hyprquickframe-git cava waypaper awww ttf-font-icons ttf-ionicons blobdrop-git cliphist python-pywalfox waybar-updates --noconfirm
+        
+PACKAGES=(
+    zip hyprland blueman cpio brightnessctl udiskie 
+    qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 
+    ttf-ubuntu-font-family ttf-hack firefox ttf-opensans 
+    ipset power-profiles-daemon swaync mtpfs gvfs-mtp 
+    libmtp dotnet-sdk nemo rofi rofi-calc rofi-emoji 
+    nftables ibus pavucontrol python-pywal flatpak imv 
+    fastfetch cmatrix waybar pamixer network-manager-applet 
+    nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk 
+    ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk 
+    xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome 
+    lib32-sdl2 fish
+)
+
+VALID_PACKAGES=()
+
+echo "Фильтрация списка пакетов Pacman..."
+for pkg in "${PACKAGES[@]}"; do
+
+    if pacman -Si "$pkg" &>/dev/null; then
+        VALID_PACKAGES+=("$pkg")
+    else
+        echo -e "\e[33m[ПРОПУСК] Пакет '$pkg' не найден в официальных репозиториях.\e[0m"
+    fi
+done
+
+if [ ${#VALID_PACKAGES[@]} -ne 0 ]; then
+    echo "Установка системных пакетов..."
+    sudo pacman -S --needed --noconfirm "${VALID_PACKAGES[@]}"
+else
+fi
+ 
+AUR_PACKAGES=(
+    waypaper awww-git wlogout swaylock-effects-git 
+    nemo-fileroller python-pywal16 hyprshot
+)
+
+VALID_AUR_PACKAGES=()
+
+echo "Фильтрация списка AUR-пакетов..."
+for pkg in "${AUR_PACKAGES[@]}"; do
+
+    if yay -Si "$pkg" &>/dev/null; then
+        VALID_AUR_PACKAGES+=("$pkg")
+    else
+        echo -e "\e[33m[ПРОПУСК] AUR-пакет '$pkg' не найден или недоступен.\e[0m"
+    fi
+done
+
+if [ ${#VALID_AUR_PACKAGES[@]} -ne 0 ]; then
+    echo "Установка AUR-пакетов..."
+    yay -S --needed --noconfirm "${VALID_AUR_PACKAGES[@]}"
+else
+fi
         
         sudo pacman -Rns wofi dunst vim dolphin
         break
@@ -384,13 +479,7 @@ systemctl --user enable gamemode && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
 sudo rfkill unblock all
-sudo mkdir -p /etc/init.d
-sudo mv ~/Hyprland_Arch/conf/autostart /etc/init.d/
-sudo chmod +x /etc/init.d/autostart
-sudo mv ~/Hyprland_Arch/conf/autostart.service /etc/systemd/system/
-sudo systemctl start autostart.service
-sudo systemctl enable autostart.service
-gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+sudo mv ~/Hyprland_Arch/conf/autostart ~/.conf/hypr/scripts/ org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_gif_mp4.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_mp3.sh $HOME/.local/share/nemo/scripts/
@@ -446,7 +535,7 @@ done
 clear
 
 echo "Successfuly installation"
-chsh -s /bin/fish
-sudo -s /usr/bin/fish
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-fisher install IlanCosman/tide@v6
+chsh -s /usr/bin/fish "$USER"
+fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+fish -c "fisher install IlanCosman/tide@v6"
+
