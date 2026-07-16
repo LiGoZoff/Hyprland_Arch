@@ -1,5 +1,7 @@
 #!/bin/bash
 sudo pacman -S archlinux-keyring --noconfirm 
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/vscode.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Brightness.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Volume.sh
