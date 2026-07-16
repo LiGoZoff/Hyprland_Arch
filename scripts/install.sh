@@ -346,57 +346,66 @@ fi
 done
 clear
 
+unpack_and_install_themes() {
+    mkdir -p "$HOME/.icons"
+    mkdir -p "$HOME/.themes"
+
+    local THEMES_SRC="$HOME/Hyprland_Arch/themes"
+
+    if [ -f "$THEMES_SRC/Kripton-v40.tar.xz" ]; then
+        tar -xJf "$THEMES_SRC/Kripton-v40.tar.xz" -C "$HOME/.themes/"
+    fi
+
+    if [ -f "$THEMES_SRC/papirus-icon-theme-white-folders.tar.xz" ]; then
+        tar -xJf "$THEMES_SRC/papirus-icon-theme-white-folders.tar.xz" -C "$HOME/.icons/"
+    fi
+
+    if [ -f "$THEMES_SRC/cursor.tar.gz" ]; then
+        tar -xvzf "$THEMES_SRC/cursor.tar.gz" -C "$HOME/.icons/"
+    fi
+
+    if [ -f "$THEMES_SRC/simple-sddm.tar.gz" ]; then
+        mkdir -p /tmp/sddm-unpack
+        tar -xvzf "$THEMES_SRC/simple-sddm.tar.gz" -C /tmp/sddm-unpack/
+        
+        sudo mkdir -p /usr/share/sddm/themes/
+        sudo mv /tmp/sddm-unpack/simple-sddm /usr/share/sddm/themes/
+      
+        rm -rf /tmp/sddm-unpack
+    fi
+
+    rm -rf "$HOME/Papirus-Light"
+
+    sleep 2
+}
+
 if check_package_installed "sddm"; then
     clear
     echo "SDDM is already installed. Do you want to install the SDDM theme? (yes/no)"
     read sddm_theme
+    sddm_theme=$(echo "$sddm_theme" | tr '[:upper:]' '[:lower:]')
     if [[ $sddm_theme = yes ]] || [[ $sddm_theme = y ]]; then
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-        sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
-        tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
-        tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz 
-        tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz 
-        tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz 
-        sudo rm -rf ~/Papirus-Light
-        mkdir -p ~/.icons
-        mkdir -p ~/.themes
-        sudo mv ~/Kripton-v40 ~/.themes
-        sudo mv ~/oreo_spark_lite_cursors ~/.icons
-        sudo mv ~/ePapirus-Dark ~/.icons
-        sudo mv ~/ePapirus ~/.icons
-        sudo mv ~/Papirus-Dark ~/.icons
-        sudo mv ~/Papirus ~/.icons
-        sudo mv ~/simple-sddm /usr/share/sddm/themes/
+        sudo mv "$HOME/Hyprland_Arch/conf/sddm.conf" /etc/
+        unpack_and_install_themes
     else
-        echo "Skipping..."
+        echo "Skipping theme installation..."
         sleep 1
     fi
 else
     clear
     echo "SDDM is not installed. Do you want to install SDDM and the SDDM theme? (yes/no)"
     read install_sddm
+    install_sddm=$(echo "$install_sddm" | tr '[:upper:]' '[:lower:]')
     if [[ $install_sddm = yes ]] || [[ $install_sddm = y ]]; then
         sudo pacman -S sddm --noconfirm
         sudo systemctl enable sddm
         sudo systemctl start sddm
         sudo cp -i /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-        sudo mv ~/Hyprland_Arch/conf/sddm.conf /etc/
-        tar -xJf ~/Hyprland_Arch/themes/Kripton-v40.tar.xz
-        tar -xvzf ~/Hyprland_Arch/themes/cursor.tar.gz 
-        tar -xJf ~/Hyprland_Arch/themes/papirus-icon-theme-white-folders.tar.xz 
-        tar -xvzf ~/Hyprland_Arch/themes/simple-sddm.tar.gz 
-        sudo rm -rf ~/Papirus-Light
-        mkdir -p ~/.icons
-        mkdir -p ~/.themes
-        sudo mv ~/Kripton-v40 ~/.themes
-        sudo mv ~/oreo_spark_lite_cursors ~/.icons
-        sudo mv ~/ePapirus-Dark ~/.icons
-        sudo mv ~/ePapirus ~/.icons
-        sudo mv ~/Papirus-Dark ~/.icons
-        sudo mv ~/Papirus ~/.icons
-        sudo mv ~/simple-sddm /usr/share/sddm/themes/
+        sudo mv "$HOME/Hyprland_Arch/conf/sddm.conf" /etc/
+        unpack_and_install_themes
     else
-        echo "Skipping..."
+        echo "Skipping SDDM and theme installation..."
         sleep 1
     fi
 fi
