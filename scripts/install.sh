@@ -459,6 +459,10 @@ elif [[ $dots = lie ]]; then
     sudo sysctl vm.vfs_cache_pressure=50
     echo "vm.swappiness=15" | sudo tee /etc/sysctl.d/99-swappiness.conf
     echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.d/99-swappiness.conf
+sudo mv ~/Hyprland_Arch/conf/autostart ~/.config/hypr/scripts/
+sudo chmod +x ~/.config/hypr/scripts/auto start
+grep -q "autostart" ~/.config/hypr/hyprland.conf || echo -e "\nexec-once = ~/Hyprland_Arch/conf/autostart\nexec-once = awww-daemon" >> ~/.config/hypr/hyprland.conf
+
     #git clone https://github.com/SpotX-Official/SpotX-Bash.git
     #cd SpotX-Bash
     #sudo chmod +x spotx.sh
@@ -478,8 +482,7 @@ sudo systemctl start power-profiles-daemon.service
 systemctl --user enable gamemode && systemctl --user start gamemode
 sudo chmod +x /usr/bin/gamemoderun
 sudo systemctl enable fstrim.timer
-sudo rfkill unblock all
-sudo mv ~/Hyprland_Arch/conf/autostart ~/.conf/hypr/scripts/ org.cinnamon.desktop.default-applications.terminal exec kitty
+sudo rfkill unblock all org.cinnamon.desktop.default-applications.terminal exec kitty
 sudo mv ~/Hyprland_Arch/conf/blobdrop.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_gif_mp4.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_mp3.sh $HOME/.local/share/nemo/scripts/
