@@ -496,8 +496,8 @@ sudo mv ~/Hyprland_Arch/conf/blobdrop_gif_mp4.sh $HOME/.local/share/nemo/scripts
 sudo mv ~/Hyprland_Arch/conf/blobdrop_mp3.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/blobdrop_png_jpg.sh $HOME/.local/share/nemo/scripts/
 sudo mv ~/Hyprland_Arch/conf/mp4togif.sh $HOME/.local/share/nemo/scripts/
-#awww-daemon & awww img $HOME/Pictures/Wallpapers/Wallpaper.png --transition-type simple & sed -i "s|^wallpaper =.*|wallpaper = $HOME/Pictures/Wallpapers/Wallpaper.png|" ~/.config/waypaper/config.ini & wal -i $HOME/Pictures/Wallpapers/Wallpaper.png & hyprctl reload
-
+#awww-daemon & awww img $HOME/Pictures/Wallpapers/Wallpaper.png --transition-type simple & sed -i "s|^wallpaper =.*|wallpaper = $HOME/Pictures/Wallpapers/Wallpaper.png|" ~/.config/waypaper/config.ini & wal -i $HOME/Pictures/Wallpapers/Wallpaper.png
+hyprctl reload
 
 while true; do
 clear
