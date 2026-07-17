@@ -2,5 +2,7 @@
 if pgrep -x rofi; then
     killall rofi
 else
-    rofi -show drun -theme $HOME/.config/rofi/style-1.rasi
-fi 
+    current_time=$(date "+🕒 %H:%M ")
+
+    rofi -show drun -display-drun "$current_time" -theme $HOME/.config/rofi/style-1.rasi
+fi

@@ -4,7 +4,6 @@
 configuration {
 	modi:                       "run,drun,filebrowser,window";
     show-icons:                 true;
-    display-drun:               "APPS";
     display-run:                "RUN";
     display-filebrowser:        "FILES";
     display-window:             "WINDOW";
@@ -65,13 +64,17 @@ inputbar {
     border-radius:               10px;
     background-color:            @background-alt;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "entry" ];
+    children:                    [ "prompt", "entry" ];
 }
-textbox-prompt-colon {
+prompt {
     enabled:                     true;
     expand:                      false;
-    background-color:            inherit;
-    text-color:                  inherit;
+    padding:                     10px 15px;
+    border-radius:               8px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 entry {
     enabled:                     true;
@@ -80,6 +83,8 @@ entry {
     cursor:                      text;
     placeholder:                 "Search";
     placeholder-color:           inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
 /*****----- Mode Switcher -----*****/
