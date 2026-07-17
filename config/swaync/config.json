@@ -30,5 +30,19 @@
   "hide-on-clear": false,
   "hide-on-action": true,
   "text-empty": "No Notifications",
-  "script-fail-notify": true
+  "script-fail-notify": true,
+  "filtering-rules": [
+    {
+      "app-name": "notify-send",
+      "summary-contains": "Brightness",
+      "action": "skip",
+      "send-to-history": false
+    },
+    {
+      "app-name": "notify-send",
+      "summary-contains": "Volume",
+      "action": "skip",
+      "send-to-history": false
+    }
+  ]
 }
