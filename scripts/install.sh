@@ -7,6 +7,7 @@ sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Brightness.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/Volume.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/TouchPad.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/waybar/scripts/generate-config.sh
+sudo chmod +x $HOME/Hyprland_Arch/conf/toggle_gemini.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_gif_mp4.sh
 sudo chmod +x $HOME/Hyprland_Arch/conf/blobdrop_mp3.sh
@@ -16,7 +17,7 @@ sudo chmod +X $HOME/Hyprland_Arch/conf/Scripts/proxy_toggle.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-calc.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/rofi/launcher-emoji.sh
-sudo chmod +x $HOME/Hyprland_Arch/config/rofi/config-menu.sh
+sudo chmod +x $HOME/Hyprland_Arch/config/hypr/scripts/config-menu.sh
 sudo chmod +x $HOME/Hyprland_Arch/config/hypr/Themes/pywal-obsidian/pywal-obsidian.sh
 sudo chmod +x $HOME/Hyprland_Arch/scripts/secureboot.sh
 
@@ -420,7 +421,6 @@ if [[ $dots = yes ]] || [[ $dots = y ]]; then
     mv ~/Hyprland_Arch/config/hypr ~/.config/
     mv ~/Hyprland_Arch/config/wal ~/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
-    
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
     mv ~/Hyprland_Arch/config/swaync ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
@@ -452,6 +452,11 @@ elif [[ $dots = lie ]]; then
     mv ~/Hyprland_Arch/config/swaync ~/.config/
     mv ~/Hyprland_Arch/config/rofi ~/.config/
     mv ~/Hyprland_Arch/config/waybar ~/.config/
+    mv  $HOME/Hyprland_Arch/conf/toggle_gemini.sh ~/.config/waybar/scripts/
+    firefox -CreateProfile "gemini-app"
+    cd ~/.config/mozilla/firefox/*.gemini-app && mkdir -p chrome && cd chrome && touch userChrome.css
+    echo '#TabsToolbar, #nav-bar { visibility: collapse !important; }' > userChrome.css
+    cd ~/.config/mozilla/firefox/*.gemini-app & echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> ../prefs.js
     sed -i "s/\$USER/$USER/g" $HOME/.config/waybar/style.css
     mv ~/Hyprland_Arch/config/clipse ~/.config/
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
