@@ -445,7 +445,7 @@ elif [[ $dots = lie ]]; then
     mv $HOME/Hyprland_Arch/config/waypaper /$HOME/.config/
     sudo chmod +x $HOME/.config/waypaper/post_script.sh
     mv ~/Hyprland_Arch/config/wal ~/.config/
-    mv ~/Hyprland_Arch/config/fish ~/.config/
+    cp ~/Hyprland_Arch/config/fish ~/.config/
     sudo mv ~/Hyprland_Arch/config/fish /root/.config/
     mv ~/Hyprland_Arch/config/kitty ~/.config/
     mv ~/Hyprland_Arch/config/fastfetch ~/.config/
@@ -457,6 +457,7 @@ elif [[ $dots = lie ]]; then
     mkdir -p ~/Pictures ~/Pictures/Wallpapers ~/Pictures/Screenshots
     mv $HOME/Hyprland_Arch/themes/Wallpaper.png $HOME/Pictures/Wallpapers/
     mv ~/Hyprland_Arch/conf/Scripts ~/.config/fish/
+    sudo chmod +x ~/.config/fish/Scripts/proxy_toggle.sh
     sudo rm -rf /etc/locale.gen
     sudo mv ~/Hyprland_Arch/conf/locale.gen /etc/
     sudo localectl set-locale ru_RU.UTF-8
