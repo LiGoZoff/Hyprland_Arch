@@ -229,7 +229,7 @@ while true; do
 
     if [[ $install = lie ]]; then
       PACKAGES=(
-     nerd-fonts zip brightnessctl zoxide parallel udiskie qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman
+     ttf-nerd-fonts-symbols zip brightnessctl zoxide parallel udiskie qt5-graphicaleffects qt5-quickcontrols qt5-quickcontrols2 cpio nano nemo firefox ttf-ubuntu-font-family gamemode reflector mpv ttf-hack mesa lib32-mesa lib32-vulkan-radeon vulkan-radeon glu lib32-glu unzip vulkan-icd-loader lib32-vulkan-icd-loader lib32-gamemode obs-studio solaar ttf-opensans ipset power-profiles-daemon swaync mtpfs gvfs-mtp libmtp dotnet-sdk rofi rofi-calc rofi-emoji nftables ibus pavucontrol python-pywal flatpak imv fastfetch cmatrix waybar qbittorrent pamixer network-manager-applet fish steam obsidian file-roller nwg-look btop noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-hannom xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal ttf-font-awesome lib32-sdl2 telegram-desktop syncthing webkit2gtk blueman
 )
 
 VALID_PACKAGES=()
