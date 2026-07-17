@@ -5,7 +5,7 @@
 
 	"modules-left": ["power-profiles-daemon", "cpu", "memory", "temperature", "hyprland/workspaces", "custom/spotify"],
 	"modules-center": ["clock", "tray"],
-	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "battery", "custom/notification", "custom/pacman"],
+	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/gemini", "battery", "custom/notification", "custom/pacman"],
 
     
     "hyprland/workspaces": {
@@ -50,6 +50,12 @@
             }
         ]
     },
+
+    "custom/gemini": {
+    "format": "󰧑",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/toggle_gemini.sh"
+    }, 
 
     "custom/pacman": {
     "format": "{icon}{0}",
@@ -144,11 +150,11 @@
                     "weeks-pos"     : "right",
                     "on-scroll"     : 1,
                     "format": {
-                              "months": "<span color='#5689B1'><b>{}<\/b><\/span>",
-                              "days": "<span color='#c9bfc7'><b>{}<\/b><\/span>",
-                              "weeks": "<span color='#9A78C3'><b>W{}<\/b><\/span>",
-                              "weekdays": "<span color='#9A78C3'><b>{}<\/b><\/span>",
-                              "today": "<span color='#2451A1'><b><u>{}<\/u><\/b><\/span>"
+                              "months": "<span color='#4FEBEA'><b>{}<\/b><\/span>",
+                              "days": "<span color='#c2d9ec'><b>{}<\/b><\/span>",
+                              "weeks": "<span color='#60DFE8'><b>W{}<\/b><\/span>",
+                              "weekdays": "<span color='#60DFE8'><b>{}<\/b><\/span>",
+                              "today": "<span color='#34A3D0'><b><u>{}<\/u><\/b><\/span>"
                               }
                     },
         "actions":  {
@@ -193,17 +199,6 @@
           "format": " {temperatureC}°C",
           "format-icons": [""],
       },
-       
-    
-        "bluetooth": {
-        "format": "",
-     ///   "on-click": "exec kitty --class bluetuith -e 'bluetuith'",
-        "format-disabled": "",
-        "format-off": "<",
-        "format-on": "",
-        "format-connected": " {device_alias}",
-        "max-length": 16
-    },
 
 	"escape": true,
 	"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder

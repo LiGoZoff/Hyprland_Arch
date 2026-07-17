@@ -5,7 +5,7 @@
 
 	"modules-left": ["power-profiles-daemon", "cpu", "memory", "temperature", "hyprland/workspaces", "custom/spotify"],
 	"modules-center": ["clock", "tray"],
-	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "battery", "custom/notification", "custom/pacman"],
+	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/gemini", "battery", "custom/notification", "custom/pacman"],
 
     
     "hyprland/workspaces": {
@@ -50,6 +50,12 @@
             }
         ]
     },
+
+    "custom/gemini": {
+    "format": "󰧑",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/toggle_gemini.sh"
+    }, 
 
     "custom/pacman": {
     "format": "{icon}{0}",
@@ -175,7 +181,7 @@
     },
     
     
-          "cpu": {
+         "cpu": {
           "interval": 2,
           "format": " {usage}%",
           "tooltip": false,
@@ -193,17 +199,6 @@
           "format": " {temperatureC}°C",
           "format-icons": [""],
       },
-       
-    
-        "bluetooth": {
-        "format": "",
-     ///   "on-click": "exec kitty --class bluetuith -e 'bluetuith'",
-        "format-disabled": "",
-        "format-off": "<",
-        "format-on": "",
-        "format-connected": " {device_alias}",
-        "max-length": 16
-    },
 
 	"escape": true,
 	"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
