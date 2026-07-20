@@ -5,7 +5,7 @@
 
 	"modules-left": ["power-profiles-daemon", "cpu", "memory", "temperature", "hyprland/workspaces", "custom/spotify"],
 	"modules-center": ["clock", "tray"],
-	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/gemini", "battery", "custom/notification", "custom/pacman"],
+	"modules-right": ["privacy", "backlight", "pulseaudio", "pulseaudio#microphone", "custom/gemini", "custom/notification", "battery","custom/pacman"],
 
     
     "hyprland/workspaces": {
@@ -181,7 +181,7 @@
     },
     
     
-          "cpu": {
+         "cpu": {
           "interval": 2,
           "format": " {usage}%",
           "tooltip": false,
